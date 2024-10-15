@@ -13,6 +13,14 @@
         android:theme="@style/Theme.TestAPP"
         tools:targetApi="31">
         <activity
+            android:name=".PythonAndJava"
+            android:exported="false"
+            android:theme="@style/Theme.TestAPP" />
+        <activity
+            android:name=".AddReceipts"
+            android:exported="false"
+            android:theme="@style/Theme.TestAPP" />
+        <activity
             android:name=".SecondActivity"
             android:exported="false" />
         <activity
