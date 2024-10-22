@@ -17,4 +17,13 @@
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="add">Add</string>
+    <string name="recent">Recent</string>
+    <string name="edit_or_nremove">Edit or\nRemove</string>
+    <string name="categoriess">Categories</string>
+    <string name="groceries">Groceries</string>
+    <string name="clothing">Clothing</string>
+    <string name="electronics">Electronics</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="home">Home</string>
+    <string name="health">Health</string>
 </resources>

@@ -19,7 +19,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxyButton"
+            android:id="@+id/editBtn"
             android:layout_width="180dp"
             android:layout_height="250dp"
             android:background="@drawable/boxy_button"
@@ -36,7 +36,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxyButton10"
+            android:id="@+id/categoriesBtn"
             android:layout_width="180dp"
             android:layout_height="250dp"
             android:background="@drawable/boxy_button"
@@ -53,7 +53,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxyButton9"
+            android:id="@+id/recentBtn"
             android:layout_width="180dp"
             android:layout_height="250dp"
             android:background="@drawable/boxy_button"
@@ -69,7 +69,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxyButton2"
+            android:id="@+id/addBtn"
             android:layout_width="180dp"
             android:layout_height="250dp"
             android:background="@drawable/boxy_button"
@@ -143,8 +143,9 @@
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/boxyButton2"
-            app:layout_constraintTop_toTopOf="@+id/boxyButton2" />
+            app:layout_constraintStart_toStartOf="@+id/addBtn"
+            app:layout_constraintTop_toTopOf="@+id/addBtn" />
+
 
         <TextView
             android:id="@+id/removeText"
@@ -154,14 +155,14 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="44dp"
             android:elevation="20dp"
-            android:text="@string/remove"
+            android:text="@string/recent"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/boxyButton9"
+            app:layout_constraintEnd_toEndOf="@+id/recentBtn"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/boxyButton9"
-            app:layout_constraintTop_toTopOf="@+id/boxyButton9" />
+            app:layout_constraintStart_toStartOf="@+id/recentBtn"
+            app:layout_constraintTop_toTopOf="@+id/recentBtn" />
 
         <TextView
             android:id="@+id/editText"
@@ -170,12 +171,12 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="33dp"
             android:elevation="10dp"
-            android:text="@string/edit"
+            android:text="@string/categories"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/boxyButton10"
-            app:layout_constraintTop_toTopOf="@+id/boxyButton10" />
+            app:layout_constraintStart_toStartOf="@+id/categoriesBtn"
+            app:layout_constraintTop_toTopOf="@+id/categoriesBtn" />
 
         <TextView
             android:id="@+id/categoriesText"
@@ -184,12 +185,12 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:elevation="10dp"
-            android:text="@string/categories"
+            android:text="@string/edit_or_nremove"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/boxyButton"
-            app:layout_constraintTop_toTopOf="@+id/boxyButton" />
+            app:layout_constraintStart_toStartOf="@+id/editBtn"
+            app:layout_constraintTop_toTopOf="@+id/editBtn" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
@@ -207,6 +208,7 @@
                 android:background="@drawable/circular_image"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profilepic" />
+
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -221,40 +223,41 @@
                 android:id="@+id/hamburger_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:backgroundTint="#00FFFFFF"
-                app:srcCompat="@drawable/hamburger_two"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="28dp"/>
+                android:layout_marginTop="28dp"
+                android:backgroundTint="#00FFFFFF"
+                app:srcCompat="@drawable/hamburger_two" />
+
 
             <!--            <ImageButton-->
-<!--                android:id="@+id/hamburger_icon"-->
-<!--                android:layout_width="35dp"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:layout_marginStart="24dp"-->
-<!--                android:layout_marginTop="28dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="?attr/selectableItemBackground"-->
-<!--                android:backgroundTint="#00FFFFFF"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                app:tint="#00FFFFFF"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/hamburger_two" />-->
+            <!--                android:id="@+id/hamburger_icon"-->
+            <!--                android:layout_width="35dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_marginStart="24dp"-->
+            <!--                android:layout_marginTop="28dp"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="?attr/selectableItemBackground"-->
+            <!--                android:backgroundTint="#00FFFFFF"-->
+            <!--                android:scaleType="fitCenter"-->
+            <!--                app:tint="#00FFFFFF"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:srcCompat="@drawable/hamburger_two" />-->
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="280dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            android:elevation="15dp"
-            app:itemTextAppearance="@style/CustomNavTextStyle"
-            android:background="?attr/colorPrimary"
-            app:menu="@menu/drawer_menu" /> <!-- Reference to your menu resource -->
-    </androidx.drawerlayout.widget.DrawerLayout>
+        android:id="@+id/nav_view"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:elevation="15dp"
+        app:itemTextAppearance="@style/CustomNavTextStyle"
+        android:background="?attr/colorPrimary"
+        app:menu="@menu/drawer_menu" /> <!-- Reference to your menu resource -->
+</androidx.drawerlayout.widget.DrawerLayout>
 
 
 

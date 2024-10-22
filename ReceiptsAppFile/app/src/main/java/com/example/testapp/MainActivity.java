@@ -49,15 +49,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        AppCompatButton boxyButton2 = findViewById(R.id.boxyButton2);
-        boxyButton2.setOnClickListener(new View.OnClickListener() {
+        Button recentButton = findViewById(R.id.recentBtn);
+        Button categoriesButton = findViewById(R.id.categoriesBtn);
 
+        recentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView = findViewById(R.id.addText);
-                textView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
+
+        categoriesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Categories.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 
