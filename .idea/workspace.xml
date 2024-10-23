@@ -7,11 +7,6 @@
       </config>
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add_receipts.xml">
-        <config>
-          <theme>@style/Theme.TestAPP</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.TestAPP</theme>
@@ -27,21 +22,6 @@
           <theme>@style/Theme.TestAPP</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/content_add_receipts.xml">
-        <config>
-          <theme>@style/Theme.TestAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/content_python_and_java.xml">
-        <config>
-          <theme>@style/Theme.TestAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/fragment_first.xml">
-        <config>
-          <theme>@style/Theme.TestAPP</theme>
-        </config>
-      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -49,24 +29,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d2770a7-af3d-47c2-9e65-2fceddbc7e7c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/PythonAndJava.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_python_and_java.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/navigation/nav_graph2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/navigation/nav_graph3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values-land/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values-v23/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values-w1240dp/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values-w600dp/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values/dimens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/SecondActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_second.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

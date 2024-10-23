@@ -51,4 +51,15 @@
         tools:layout_editor_absoluteX="290dp"
         tools:layout_editor_absoluteY="203dp" />
 
+    <EditText
+        android:id="@+id/StoreName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Store Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="99dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
