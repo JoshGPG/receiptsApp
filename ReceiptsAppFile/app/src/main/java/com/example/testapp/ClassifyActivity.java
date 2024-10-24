@@ -1,6 +1,7 @@
 package com.example.testapp;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +13,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
+
+import java.io.IOException;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -29,7 +34,7 @@ import com.android.volley.toolbox.Volley;
 public class ClassifyActivity extends AppCompatActivity {
 
     private TextView textView;
-    private String stringToken = "LA-20e381e84ae14bc18d5acd55cc4bd7af8407420464044cbb99558ac9235f6072";
+    private String stringToken = "LA-b8373a79433f4ba38d1487c23352a6b3984ebef9250a4bfa88457fb659498d01";
     private String stringURLEndPoint = "https://api.llama-api.com/chat/completions";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +44,16 @@ public class ClassifyActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.button), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
             textView = findViewById(R.id.textView);
+            EditText editText = findViewById(R.id.categories);
             return insets;
         });
     }
 
     public void buttonClassify(View view){
-        String stringInputText ="Write a poem on clouds?";
+        EditText editText = findViewById(R.id.categories);
+        String stringInputText ="Which of the six categories of Groceries, Clothing, Electronic, Health and Personal, Home, Entertainment does  "+ editText.getText().toString() +" belong to? Health and Personal are the same category, with the class name being Health and Personal. The answer only needs to be the class name.";
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObjectMessage =new JSONObject();
         JSONArray jsonObjectMessageArray=new JSONArray();
@@ -69,13 +77,12 @@ public class ClassifyActivity extends AppCompatActivity {
                         String stringOutput = response.getJSONArray("choices")
                                 .getJSONObject(0)
                                 .getJSONObject("message")
-                                .getString("output");
+                                .getString("content");
 
                         textView.setText(stringOutput);
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
-
                 }
             }, new Response.ErrorListener() {
         @Override
@@ -87,7 +94,7 @@ public class ClassifyActivity extends AppCompatActivity {
         public Map<String, String> getHeaders() throws AuthFailureError {
             Map<String, String> mapHeader = new HashMap<>();
             mapHeader.put("Content-Type", "application/json");
-            mapHeader.put("Authorization","Bearer"+stringToken);
+            mapHeader.put("Authorization","Bearer LA-b8373a79433f4ba38d1487c23352a6b3984ebef9250a4bfa88457fb659498d01");
             return mapHeader;
         }
     };
@@ -100,4 +107,18 @@ public class ClassifyActivity extends AppCompatActivity {
         Volley.newRequestQueue(getApplicationContext()).add(jsonObjectRequest);
     }
 
+    public void save(View view){
+        EditText editText = findViewById(R.id.categories);
+        String csvFile ="./data.csv";
+        FileWriter fileWriter =null;
+        try{
+            fileWriter =new FileWriter(csvFile);
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            writer.write(editText.getText().toString()+textView.getText().toString());
+            writer.close();
+            fileWriter.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
