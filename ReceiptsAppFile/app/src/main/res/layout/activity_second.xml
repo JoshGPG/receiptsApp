@@ -6,50 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    app:circularflow_radiusInDP="100dp"
     tools:context=".SecondActivity">
-
-    <TextView
-        android:id="@+id/Item1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item 1"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233" />
 
     <Button
         android:id="@+id/button_back"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
-        android:background="#AEB4AE"
+        android:layout_marginEnd="284dp"
+        android:background="#000000"
         android:fontFamily="monospace"
         android:text="@string/back_to_main"
+        android:textColor="#FBFBFB"
+        android:textColorLink="#FBFBFB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <Button
         android:id="@+id/Create_New_Field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="465dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="55dp"
         android:text="Add More"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="772dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Catergories" />
 
     <EditText
         android:id="@+id/Price1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
         android:ems="5"
         android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="203dp" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputEditText2"
+        app:layout_constraintTop_toBottomOf="@+id/DatePurchased"
+        tools:visibility="visible" />
 
     <EditText
         android:id="@+id/StoreName"
@@ -59,7 +63,78 @@
         android:ems="10"
         android:inputType="text"
         android:text="Store Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="99dp" />
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="92dp" />
+
+    <TextView
+        android:id="@+id/Catergory"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="30dp"
+        android:background="#3F51B5"
+        android:text="Category"
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/Catergories"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Catergories"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="30dp"
+        android:background="#3F51B5"
+        android:text="Category"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Catergory" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="19dp"
+        android:hint="Item 2"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal"
+        app:layout_constraintStart_toEndOf="@+id/Catergories"
+        tools:layout_editor_absoluteY="300dp" />
+
+    <EditText
+        android:id="@+id/DatePurchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date Purchased"
+        android:inputType="date"
+        android:singleLine="true"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="147dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditText2"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="19dp"
+        android:hint="Item 1"
+        app:layout_constraintEnd_toStartOf="@+id/Price1"
+        app:layout_constraintStart_toEndOf="@+id/Catergory"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputEditText"
+        app:layout_constraintTop_toBottomOf="@+id/Price1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
