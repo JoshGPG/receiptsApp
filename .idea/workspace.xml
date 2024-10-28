@@ -7,6 +7,11 @@
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_classify.xml">
+        <config>
+          <theme>@style/Theme.TestAPP</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.TestAPP</theme>
@@ -33,6 +38,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_second.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_classify.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_classify.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +54,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/joshuarieth/.android/avd/Pixel_8_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ygg04\.android\avd\Medium_Phone_API_32.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/ReceiptsAppFile">
       <ProjectState />
@@ -128,6 +140,11 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "AddReciptsActivity",
     "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ygg04/Documents/GitHub/receiptsApp",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -137,8 +154,11 @@
     <key name="android.template.-1607158390">
       <recent name="com.example.testapp" />
     </key>
+    <key name="android.template.-263200104">
+      <recent name="com.example.testapp" />
+    </key>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Android App.ClassifyActivity">
     <configuration name="App" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
