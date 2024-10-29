@@ -26,4 +26,7 @@
     <string name="entertainment">Entertainment</string>
     <string name="home">Home</string>
     <string name="health">Health</string>
+    <string name="create_account">Create Account</string>
+    <string name="receipt_scanner2">Receipt Scanner</string>
+    <string name="login">Login</string>
 </resources>
