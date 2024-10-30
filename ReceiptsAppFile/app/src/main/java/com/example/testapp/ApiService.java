@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -13,9 +14,16 @@ public interface ApiService {
     Call<List<User>> getUsers();
 
     @POST("users")
+    Call<Void> createUser(@Body User user);
+
+    @POST("users")
     Call<Void> addUser(@Body User user);
 
     // POST request for login
     @POST("login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
+
+    @GET("checkUsername")
+    Call<UsernameCheckResponse> checkUsernameExists(@Query("username") String username);
+
 }
