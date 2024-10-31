@@ -1,6 +1,7 @@
 package com.example.testapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +43,18 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
+        User user = getIntent().getParcelableExtra("user");
 
+        if (user != null) {
+            String name = user.getName();
+            int userId = user.getUserId();
+            String username = user.getUsername();
+            String password = user.getPassword();
+
+            Log.d("MainActivity", "Received User - ID: " + userId + ", Name: " + name + ", Username: " + username);
+//            System.out.println(userId);
+            Toast.makeText(this, "Welcome, " + userId, Toast.LENGTH_SHORT).show();
+        }
 
 
         ImageButton hamburgerIcon = findViewById(R.id.hamburger_icon);

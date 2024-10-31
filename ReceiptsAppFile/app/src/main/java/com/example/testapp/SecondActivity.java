@@ -98,7 +98,7 @@ public class SecondActivity extends AppCompatActivity {
                     return;
                 }
 
-                User newUser = new User(name, username, password);
+                User newUser = new User(69, name, username, password);
 
                 apiService.addUser(newUser).enqueue(new Callback<Void>() {
                     @Override

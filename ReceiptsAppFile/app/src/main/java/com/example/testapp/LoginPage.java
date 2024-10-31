@@ -75,7 +75,19 @@ public class LoginPage extends AppCompatActivity {
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()) {
                             // Login success - route to another page (another activity)
-                            Intent intent = new Intent(LoginPage.this, MainActivity.class);  // Replace with your destination activity
+//                            Intent intent = new Intent(LoginPage.this, MainActivity.class);  // Replace with your destination activity
+//                            startActivity(intent);
+//                            finish();
+                            LoginResponse loginResponse = response.body();
+                            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+
+                            int userId = loginResponse.getUserId();  // Replace with actual userId
+                            String name = loginResponse.getName();  // Replace with actual name
+                            String username = loginResponse.getUsername();  // Replace with actual username
+                            String password = loginResponse.getPassword();  // Replace with actual password
+                            System.out.println(userId);
+                            User user = new User(userId, name, username, password);
+                            intent.putExtra("user", user);  // Pass the Parcelable User object
                             startActivity(intent);
                             finish();
                         } else {

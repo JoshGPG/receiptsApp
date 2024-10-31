@@ -14,7 +14,7 @@ public interface ApiService {
     Call<List<User>> getUsers();
 
     @POST("users")
-    Call<Void> createUser(@Body User user);
+    Call<Void> createUser(@Body CreateUser user);
 
     @POST("users")
     Call<Void> addUser(@Body User user);
