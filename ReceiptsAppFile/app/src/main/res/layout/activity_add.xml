@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0">
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal8"
+        android:layout_width="84dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="702dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal7"
+        android:layout_width="84dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="360dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal6"
+        android:layout_width="84dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="448dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal5"
+        android:layout_width="84dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="534dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_margin="8dp"
+        android:background="@android:color/black"
+        android:text="Back"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/Category"
+        android:layout_width="83dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="158dp"
+        android:background="#FFEB3B"
+        android:text="Category"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="83dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="243dp"
+        android:background="#FFEB3B"
+        android:text="Category"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/Category1"
+        android:layout_width="83dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="328dp"
+        android:background="#FFEB3B"
+        android:text="Category"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/category2"
+        android:layout_width="83dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="413dp"
+        android:background="#FFEB3B"
+        android:text="Category"
+        android:textAlignment="center"
+        android:textColor="#070707" />
+
+    <TextView
+        android:id="@+id/Category3"
+        android:layout_width="83dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="498dp"
+        android:background="#FFEB3B"
+        android:backgroundTint="#FFFFFF"
+        android:backgroundTintMode="multiply"
+        android:text="Category"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:autoSizeTextType="none" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="158dp"
+        android:background="@android:color/holo_blue_light"
+        android:ems="10"
+        android:hint="Input Item"
+        android:inputType="text"
+        android:padding="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="243dp"
+        android:background="@android:color/holo_blue_light"
+        android:ems="10"
+        android:hint="Input Item"
+        android:inputType="text"
+        android:padding="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="328dp"
+        android:background="@android:color/holo_blue_light"
+        android:ems="10"
+        android:hint="Input Item"
+        android:inputType="text"
+        android:padding="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="413dp"
+        android:background="@android:color/holo_blue_light"
+        android:ems="10"
+        android:hint="Input Item"
+        android:inputType="text"
+        android:padding="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="498dp"
+        android:background="@android:color/holo_blue_light"
+        android:ems="10"
+        android:hint="Input Item"
+        android:inputType="text"
+        android:padding="0dp"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
+        android:layout_width="84dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="616dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/add_more_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Add More"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/categorize_button"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="74dp"
+        android:background="@android:color/holo_red_light"
+        android:text="Categorize"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="83dp"
+        android:ems="10"
+        android:hint="Date Purchased"
+        android:inputType="date"
+        android:textAlignment="center"
+        android:textColor="#000000" />
+
+</RelativeLayout>
