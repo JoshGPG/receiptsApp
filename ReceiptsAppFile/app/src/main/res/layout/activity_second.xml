@@ -59,12 +59,15 @@
         android:id="@+id/StoreName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:capitalize="characters"
         android:ems="10"
         android:inputType="text"
         android:text="Store Name"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="92dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Catergory"
@@ -96,33 +99,38 @@
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_marginStart="17dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="19dp"
         android:hint="Item 2"
         app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal"
         app:layout_constraintStart_toEndOf="@+id/Catergories"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
 
     <EditText
         android:id="@+id/DatePurchased"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Date Purchased"
         android:inputType="date"
         android:singleLine="true"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="147dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StoreName" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText2"
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
         android:layout_marginEnd="19dp"
         android:hint="Item 1"
         app:layout_constraintEnd_toStartOf="@+id/Price1"
         app:layout_constraintStart_toEndOf="@+id/Catergory"
-        tools:layout_editor_absoluteY="225dp" />
+        app:layout_constraintTop_toBottomOf="@+id/DatePurchased" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
@@ -136,5 +144,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInputEditText"
         app:layout_constraintTop_toBottomOf="@+id/Price1" />
+
+    <TextView
+        android:id="@+id/textViewOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:onClick="buttonPythonRun"
+        android:text="Run Python"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:inputType="text"
+        android:text="INPUT"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewOutput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

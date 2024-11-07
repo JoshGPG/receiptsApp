@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
 public class SecondActivity extends AppCompatActivity {
 
+    private TextView textViewOutput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +31,12 @@ public class SecondActivity extends AppCompatActivity {
             return insets;
         });
 
+        textViewOutput = findViewById(R.id.textViewOutput);
+
+
+        Python.start(new AndroidPlatform(getApplicationContext()));
+
+
         Button backButton = findViewById(R.id.button_back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +45,20 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    public void buttonPythonRun (View view) {
+        Python python = Python.getInstance();
+        EditText editText = findViewById(R.id.editText);
+
+        // Retrieve the input text content
+        String userInput = editText.getText().toString();
+
+        PyObject pyObjectResult = python.getModule("test1").callAttr("categorize_item", userInput);
+
+        textViewOutput.setText(pyObjectResult.toString());
+
+
     }
 }
