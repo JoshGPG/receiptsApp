@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -25,5 +26,8 @@ public interface ApiService {
 
     @GET("checkUsername")
     Call<UsernameCheckResponse> checkUsernameExists(@Query("username") String username);
+
+    @GET("/purchases/{userId}")
+    Call<PurchasesResponse> getPurchases(@Path("userId") int userId);
 
 }

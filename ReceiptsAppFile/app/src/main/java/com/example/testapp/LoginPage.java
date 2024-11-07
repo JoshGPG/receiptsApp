@@ -42,6 +42,7 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginPage.this, StartPage.class);
                 startActivity(intent);
+                finish();
             }
         });
 

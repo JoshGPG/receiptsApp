@@ -42,6 +42,7 @@ public class CreatePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(CreatePage.this, StartPage.class);
                 startActivity(intent);
+                finish();
             }
         });
 

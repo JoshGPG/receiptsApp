@@ -40,10 +40,21 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
         User user = getIntent().getParcelableExtra("user");
+
+        Button recentButton = findViewById(R.id.recentBtn);
+        recentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecentPage.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
+                startActivity(intent);
+            }
+        });
 
         if (user != null) {
             String name = user.getName();
@@ -55,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println(userId);
             Toast.makeText(this, "Welcome, " + userId, Toast.LENGTH_SHORT).show();
         }
+
+        TextView name = findViewById(R.id.name);
+        String fullName = user.getName();
+        String firstName = fullName.contains(" ") ? fullName.split(" ")[0] : fullName;
+        name.setText(" " + firstName);
 
 
         ImageButton hamburgerIcon = findViewById(R.id.hamburger_icon);
@@ -69,25 +85,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-        Button recentButton = findViewById(R.id.recentBtn);
-        recentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Button categoriesButton = findViewById(R.id.categoriesBtn);
         categoriesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Categories.class);
-                startActivity(intent);
-            }
+                intent.putExtra("user", user);  // Pass the Parcelable User object
+                startActivity(intent);}
         });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear the back stack
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                    finish();
                     return true;
                 }
                 return false;

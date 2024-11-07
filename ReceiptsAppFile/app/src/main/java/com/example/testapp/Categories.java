@@ -36,12 +36,16 @@ public class Categories extends AppCompatActivity {
         Button homeButton = findViewById(R.id.homeBtn);
         Button entertainmentButton = findViewById(R.id.enterBtn);
 
+        User user = getIntent().getParcelableExtra("user");
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Categories.this, MainActivity.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
                 startActivity(intent);
+                finish();
             }
         });
     }
