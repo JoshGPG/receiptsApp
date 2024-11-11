@@ -24,7 +24,8 @@
         <activity
             android:name=".ClassifyActivity"
             android:exported="true"
-            android:theme="@style/Theme.TestAPP" />
+            android:theme="@style/Theme.TestAPP"
+        />
         <activity
             android:name=".SecondActivity"
             android:exported="false" />
