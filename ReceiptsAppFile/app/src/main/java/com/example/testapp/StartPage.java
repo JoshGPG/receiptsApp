@@ -27,7 +27,7 @@ public class StartPage extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.loginButton);
         Button createButton = findViewById(R.id.createButton);
-
+        
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -17,6 +17,8 @@ import com.chaquo.python.Python;
 
 public class Categories extends AppCompatActivity {
 
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +33,19 @@ public class Categories extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backBtn);
         Button groceriesButton = findViewById(R.id.groceriesBtn);
         Button clothingButton = findViewById(R.id.clothingBtn);
-        Button eletronicsButton = findViewById(R.id.electronicsBtn);
+        Button electronicsButton = findViewById(R.id.electronicsBtn);
         Button healthButton = findViewById(R.id.healthBtn);
         Button homeButton = findViewById(R.id.homeBtn);
         Button entertainmentButton = findViewById(R.id.enterBtn);
 
-        User user = getIntent().getParcelableExtra("user");
+        user = getIntent().getParcelableExtra("user");
+
+        groceriesButton.setOnClickListener(v -> openReceiptListPage("Groceries"));
+        clothingButton.setOnClickListener(v -> openReceiptListPage("Clothing"));
+        electronicsButton.setOnClickListener(v -> openReceiptListPage("Electronics"));
+        healthButton.setOnClickListener(v -> openReceiptListPage("Health"));
+        homeButton.setOnClickListener(v -> openReceiptListPage("Home"));
+        entertainmentButton.setOnClickListener(v -> openReceiptListPage("Entertainment"));
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +57,14 @@ public class Categories extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void openReceiptListPage(String category) {
+        Intent intent = new Intent(Categories.this, ReceiptByCategory.class);
+        intent.putExtra("category", category);
+        intent.putExtra("user", user);
+        intent.putExtra("userId", user.getUserId());
+        startActivity(intent);
     }
 
 }

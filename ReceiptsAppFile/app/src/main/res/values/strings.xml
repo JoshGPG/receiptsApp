@@ -36,6 +36,15 @@
     <string name="open">Open navigation drawer</string>
     <string name="close">Close navigation drawer</string>
 
+    <string-array name="category_options">
+        <item>Groceries</item>
+        <item>Clothing</item>
+        <item>Electronics</item>
+        <item>Health</item>
+        <item>Home</item>
+        <item>Entertainment</item>
+    </string-array>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
