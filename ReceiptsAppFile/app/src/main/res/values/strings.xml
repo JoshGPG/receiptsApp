@@ -87,4 +87,6 @@
     <string name="full_name">Full Name</string>
     <string name="create_user">Create User</string>
     <string name="recent_receipts">Recent Receipts</string>
+    <string name="budget">Budget</string>
+    <string name="placeholdertext">$0.00 / $0.00</string>
 </resources>

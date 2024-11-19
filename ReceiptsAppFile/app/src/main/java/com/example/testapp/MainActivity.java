@@ -85,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button budgetButton = findViewById(R.id.budgetBtn);
+        budgetButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Budget.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
+                startActivity(intent);
+            }
+        });
+
         Button categoriesButton = findViewById(R.id.categoriesBtn);
         categoriesButton.setOnClickListener(new View.OnClickListener() {
             @Override
