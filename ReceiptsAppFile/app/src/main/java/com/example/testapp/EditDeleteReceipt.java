@@ -49,9 +49,8 @@ public class EditDeleteReceipt extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")  // Replace with your server URL
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -74,7 +73,6 @@ public class EditDeleteReceipt extends AppCompatActivity {
                 } else if ("RecentPage".equals(originatingClass)) {
                     intent = new Intent(EditDeleteReceipt.this, RecentPage.class);
                 } else {
-                    // Default to a fallback page if the originatingClass is unknown
                     intent = new Intent(EditDeleteReceipt.this, MainActivity.class);
                 }
                 intent.putExtra("user", user);
@@ -86,16 +84,12 @@ public class EditDeleteReceipt extends AppCompatActivity {
         user = getIntent().getParcelableExtra("user");
         purchase = getIntent().getParcelableExtra("purchase");
 
-//        System.out.println(purchase.getPurchaseId());
-
-        // Initialize UI components
         itemNameEditText = findViewById(R.id.itemNameEditText);
         priceEditText = findViewById(R.id.priceEditText);
         categorySpinner = findViewById(R.id.categorySpinner);
         saveButton = findViewById(R.id.saveButton);
         deleteButton = findViewById(R.id.deleteButton);
 
-        // Populate fields with current data
         itemNameEditText.setText(purchase.getItemName());
         priceEditText.setText(String.valueOf(purchase.getPrice()));
 
@@ -104,7 +98,6 @@ public class EditDeleteReceipt extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
-        // Set the spinner's selection to the current category
         String currentCategory = purchase.getCategory();
         int categoryPosition = adapter.getPosition(currentCategory);
         if (categoryPosition >= 0) {
@@ -116,17 +109,14 @@ public class EditDeleteReceipt extends AppCompatActivity {
             return;
         }
 
-        // Set up save button
         saveButton.setOnClickListener(v -> {
             String updatedItemName = itemNameEditText.getText().toString().trim();
             double updatedPrice = Double.parseDouble(priceEditText.getText().toString().trim());
             String updatedCategory = categorySpinner.getSelectedItem().toString();
 
-            // Create the request object with only the necessary fields
             PurchaseUpdateRequest updateRequest = new PurchaseUpdateRequest(
                     purchase.getId(), updatedItemName, updatedPrice, updatedCategory);
 
-            // Log JSON to verify it matches what the server expects
             Gson gson = new Gson();
             String requestJson = gson.toJson(updateRequest);
             Log.d("EditDeleteReceipt", "Request JSON: " + requestJson);
@@ -136,7 +126,7 @@ public class EditDeleteReceipt extends AppCompatActivity {
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(EditDeleteReceipt.this, "Receipt updated successfully!", Toast.LENGTH_SHORT).show();
-                        finish();  // Close the activity after successful update
+                        finish();
                     } else {
                         Toast.makeText(EditDeleteReceipt.this, "Failed to update receipt. Code: " + response.code(), Toast.LENGTH_SHORT).show();
                         try {
@@ -158,20 +148,17 @@ public class EditDeleteReceipt extends AppCompatActivity {
         });
 
 
-        // Set up delete button
         deleteButton.setOnClickListener(v -> {
-            // Show confirmation dialog
             new AlertDialog.Builder(this)
                     .setTitle("Delete Purchase")
                     .setMessage("Are you sure you want to delete this purchase?")
                     .setPositiveButton("Yes", (dialog, which) -> {
-                        // Call delete API if confirmed
                         apiService.deletePurchase(purchase.getId()).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 if (response.isSuccessful()) {
                                     Toast.makeText(EditDeleteReceipt.this, "Receipt deleted successfully!", Toast.LENGTH_SHORT).show();
-                                    finish();  // Close the activity to return to the list
+                                    finish();
                                 } else {
                                     Toast.makeText(EditDeleteReceipt.this, "Failed to delete receipt. Code: " + response.code(), Toast.LENGTH_SHORT).show();
                                 }

@@ -8,14 +8,12 @@ public class CreateUser implements Parcelable {
     private String username;
     private String password;
 
-    // Constructor
     public CreateUser(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
     }
 
-    // Parcelable constructor
     protected CreateUser(Parcel in) {
         name = in.readString();
         username = in.readString();

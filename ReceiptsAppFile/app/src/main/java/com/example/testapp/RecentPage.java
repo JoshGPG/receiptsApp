@@ -115,7 +115,6 @@ public class RecentPage extends AppCompatActivity {
                         }
                     });
 
-                    // Update the adapter with the sorted list
                     purchasesAdapter.setPurchases(purchasesList);
                 } else {
                     Toast.makeText(RecentPage.this, "Failed to load purchases", Toast.LENGTH_SHORT).show();
