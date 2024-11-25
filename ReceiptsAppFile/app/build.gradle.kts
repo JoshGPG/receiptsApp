@@ -20,6 +20,17 @@ android {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }
     }
+    chaquopy {
+        defaultConfig {
+            pip {
+                // A requirement specifier, with or without a version number:
+                install("pandas")
+                install("numpy")
+                install("tensorflow")
+                install("matplotlib")
+            }
+        }
+    }
 
     buildTypes {
         release {
