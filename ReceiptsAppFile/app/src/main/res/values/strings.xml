@@ -73,4 +73,9 @@
     <string name="create_account">Create Account</string>
     <string name="receipt_scanner2">Receipt Scanner</string>
     <string name="login">Login</string>
+    <string name="hint_enter_user_id">Enter User ID</string>
+    <string name="hint_enter_total_budget">Enter Total Budget</string>
+    <string name="button_run_ml">Run ML</string>
+    <string name="text_results_placeholder">Results will appear here</string>
+    <string name="image_description_results">Generated graph from predictions</string>
 </resources>
