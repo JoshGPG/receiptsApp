@@ -52,7 +52,7 @@ public class ClassifyActivity extends AppCompatActivity {
     }
 
     public void buttonClassify(View view){
-        EditText editText = findViewById(R.id.categories);
+        EditText editText = findViewById(R.id.Item1);
         String stringInputText ="Which of the six categories of Groceries, Clothing, Electronic, Health and Personal, Home, Entertainment does  "+ editText.getText().toString() +" belong to? Health and Personal are the same category, with the class name being Health and Personal. The answer only needs to be the class name.";
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObjectMessage =new JSONObject();

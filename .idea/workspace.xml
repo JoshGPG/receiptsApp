@@ -49,19 +49,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3c3e91a-5e4d-4aa0-84ae-8b1b28bae3da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/TestAPP.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/AddActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/AddActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add2.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +150,7 @@
   &quot;keyToString&quot;: {
     &quot;Android App.ClassifyActivity.executor&quot;: &quot;Run&quot;,
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
