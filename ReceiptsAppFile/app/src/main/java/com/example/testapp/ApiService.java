@@ -44,5 +44,14 @@ public interface ApiService {
     @DELETE("/deletePurchase/{id}")
     Call<Void> deletePurchase(@Path("id") int purchaseId);
 
+    @GET("/lists/{userId}")
+    Call<ListsResponse> getLists(@Path("userId") int userId);
+
+    @GET("/purchasesByIds")
+    Call<PurchasesResponse> getPurchasesByIds(@Query("ids") String purchaseIds);
+
+    @GET("listItems/{listId}")
+    Call<PurchasesResponse> getPurchasesByListId(@Path("listId") int listId);
+
 
 }

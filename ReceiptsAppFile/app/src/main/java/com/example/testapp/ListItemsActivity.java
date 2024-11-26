@@ -2,8 +2,9 @@ package com.example.testapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.text.Html;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,11 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,36 +24,40 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RecentPage extends AppCompatActivity {
+public class ListItemsActivity extends AppCompatActivity {
 
     private ApiService apiService;
     private RecyclerView recyclerView;
     private PurchasesAdapter purchasesAdapter;
     private User user;
-    private ListsAdapter listsAdapter; // Adapter for lists
+    private String listName;
+    private String purchases;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_recent_page);
+        setContentView(R.layout.activity_list_items);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        // Retrieve extras
         user = getIntent().getParcelableExtra("user");
+        listName = getIntent().getStringExtra("list_name");
+        purchases = getIntent().getStringExtra("purchases"); // Comma-separated purchase IDs
 
         ImageButton backButton = findViewById(R.id.backBtn);
         backButton.setOnClickListener(view -> {
-            Intent intent = new Intent(RecentPage.this, MainActivity.class);
-            intent.putExtra("user", user); // Pass the Parcelable User object
+            Intent intent = new Intent(ListItemsActivity.this, RecentPage.class);
+            intent.putExtra("user", user);
             startActivity(intent);
             finish();
         });
 
-        int userId = user.getUserId();
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(Html.fromHtml("<u>" + listName + "</u>"));
 
         // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
@@ -65,41 +66,46 @@ public class RecentPage extends AppCompatActivity {
                 .build();
         apiService = retrofit.create(ApiService.class);
 
-        // Setup RecyclerView
+
+        // Set up RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Set up the adapter
-        listsAdapter = new ListsAdapter(new ArrayList<>(), list -> {
-            Intent intent = new Intent(RecentPage.this, ListItemsActivity.class);
-            intent.putExtra("list_name", list.getListName());
-            intent.putExtra("purchases", list.getPurchases()); // Comma-separated IDs
-            intent.putExtra("user", user); // Pass the Parcelable User object
+        purchasesAdapter = new PurchasesAdapter(new ArrayList<>(), purchase -> {
+            // Navigate to EditDeleteReceipt
+            Intent intent = new Intent(ListItemsActivity.this, EditDeleteReceipt.class);
+            intent.putExtra("purchase", purchase);
+            intent.putExtra("user", user);
             startActivity(intent);
         });
-        recyclerView.setAdapter(listsAdapter);
+        recyclerView.setAdapter(purchasesAdapter);
 
-        // Fetch lists for the user
-        fetchLists(userId);
+        // Fetch purchases
+        fetchPurchases(purchases);
     }
 
-    private void fetchLists(int userId) {
-        apiService.getLists(userId).enqueue(new Callback<ListsResponse>() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchPurchases(purchases);
+    }
+
+    private void fetchPurchases(String purchaseIds) {
+        apiService.getPurchasesByIds(purchaseIds).enqueue(new Callback<PurchasesResponse>() {
             @Override
-            public void onResponse(Call<ListsResponse> call, Response<ListsResponse> response) {
+            public void onResponse(Call<PurchasesResponse> call, Response<PurchasesResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    List<ListData> lists = response.body().getLists();
-                    listsAdapter.setLists(lists); // Populate RecyclerView with lists
+                    List<Purchase> purchasesList = response.body().getPurchases();
+                    purchasesAdapter.setPurchases(purchasesList); // Populate RecyclerView with purchases
                 } else {
-                    Toast.makeText(RecentPage.this, "Failed to load lists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListItemsActivity.this, "Failed to load items", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ListsResponse> call, Throwable t) {
-                Toast.makeText(RecentPage.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<PurchasesResponse> call, Throwable t) {
+                Toast.makeText(ListItemsActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }
