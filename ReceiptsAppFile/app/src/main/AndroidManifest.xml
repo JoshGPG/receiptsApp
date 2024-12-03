@@ -22,7 +22,7 @@
             android:name=".Categories"
             android:exported="false" />
         <activity
-            android:name=".ClassifyActivity"
+            android:name=".Classify.ClassifyActivity1"
             android:exported="true"
             android:theme="@style/Theme.TestAPP"
         />

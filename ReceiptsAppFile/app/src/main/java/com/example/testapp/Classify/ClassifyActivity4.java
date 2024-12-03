@@ -1,8 +1,7 @@
-package com.example.testapp;
-import android.content.Intent;
+package com.example.testapp.Classify;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
@@ -30,10 +29,10 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.testapp.R;
 
 
-
-public class AddActivity extends AppCompatActivity {
+public class ClassifyActivity4 extends AppCompatActivity {
 
     private TextView textView;
     private String stringToken = "LA-b8373a79433f4ba38d1487c23352a6b3984ebef9250a4bfa88457fb659498d01";
@@ -46,26 +45,16 @@ public class AddActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.categorize_button), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
+            textView = findViewById(R.id.textView);
+            TextView Textview = findViewById(R.id.Category4);
             return insets;
-        });
-
-        textView = findViewById(R.id.Category1);
-//        EditText editText = findViewById(R.id.categories);
-
-        Button addButton = findViewById(R.id.back_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
         });
     }
 
     public void buttonClassify(View view){
-        EditText editText = findViewById(R.id.Item1);
-        String stringInputText ="out of the six categories: Groceries, Clothing, Electronic, Health and Personal, Home, Entertainment does  "+ editText.getText().toString() +" belong to? The answer only needs to be the category name.";
+        EditText editText = findViewById(R.id.Item4);
+        String stringInputText ="Of the six categories Groceries, Clothing, Electronic, Health and Personal, Home, Entertainment does  "+ editText.getText().toString() +" belong to? The answer only needs to be the category name.";
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObjectMessage =new JSONObject();
         JSONArray jsonObjectMessageArray=new JSONArray();
@@ -120,13 +109,13 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void save(View view){
-        EditText editText = findViewById(R.id.categories);
+        TextView textView = findViewById(R.id.Category4);
         String csvFile ="./data.csv";
         FileWriter fileWriter =null;
         try{
             fileWriter =new FileWriter(csvFile);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            writer.write(editText.getText().toString()+textView.getText().toString());
+            writer.write(textView.getText().toString()+textView.getText().toString());
             writer.close();
             fileWriter.close();
         }catch (IOException e){

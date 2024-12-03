@@ -49,9 +49,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3c3e91a-5e4d-4aa0-84ae-8b1b28bae3da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity10.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/AddActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/AddActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/ClassifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/java/com/example/testapp/Classify/ClassifyActivity1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceiptsAppFile/app/src/main/res/layout/activity_add2.xml" afterDir="false" />
     </list>
@@ -148,6 +159,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Android App.App1.executor&quot;: &quot;Run&quot;,
     &quot;Android App.ClassifyActivity.executor&quot;: &quot;Run&quot;,
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -178,8 +190,9 @@
       <recent name="com.example.testapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.app">
-    <configuration name="App" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+  <component name="RunManager" selected="Android App.App1">
+    <configuration name="App1" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="TestAPP.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -301,7 +314,7 @@
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="com.example.testapp.ClassifyActivity" />
+      <option name="ACTIVITY_CLASS" value="com.example.testapp.Classify.ClassifyActivity1" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
@@ -528,7 +541,7 @@
     <list>
       <item itemvalue="Android App.app" />
       <item itemvalue="Android App.ReceiptsApp.app" />
-      <item itemvalue="Android App.App" />
+      <item itemvalue="Android App.App1" />
       <item itemvalue="Android App.ClassifyActivity" />
       <item itemvalue="Android App.SecondActivity" />
       <item itemvalue="Gradle.Unnamed" />
