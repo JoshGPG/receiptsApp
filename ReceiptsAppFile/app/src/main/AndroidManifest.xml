@@ -26,9 +26,10 @@
             android:name=".RecentPage"
             android:exported="false" />
         <activity
-            android:name=".ClassifyActivity"
+            android:name=".Classify.ClassifyActivity1"
             android:exported="true"
-            android:theme="@style/Theme.TestAPP" />
+            android:theme="@style/Theme.TestAPP"
+        />
         <activity
             android:name=".CreateAccount"
             android:exported="false" />
