@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
         Button recentButton = findViewById(R.id.recentBtn);
         Button categoriesButton = findViewById(R.id.categoriesBtn);
+        Button addButton = findViewById(R.id.addBtn);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recentButton.setOnClickListener(new View.OnClickListener() {
             @Override
