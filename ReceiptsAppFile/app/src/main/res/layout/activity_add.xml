@@ -59,7 +59,8 @@
         android:inputType="text"
         android:text="Name"
         android:textColorHint="#000000"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:visibility="visible" />
 
     <!-- Date Purchased always on top -->
     <EditText
@@ -320,45 +321,6 @@
         android:textAlignment="center"
         android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/Category8"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/Category7"
-        android:layout_marginTop="15dp"
-        android:background="#FFEB3B"
-        android:text="Category"
-        android:textAlignment="center"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/Category9"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/Category8"
-        android:layout_marginTop="15dp"
-        android:background="#FFEB3B"
-        android:text="Category"
-        android:textAlignment="center"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/Category10"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/Category9"
-        android:layout_marginTop="15dp"
-        android:background="#FFEB3B"
-        android:text="Category"
-        android:textAlignment="center"
-        android:textColor="#000000" />
-
     <EditText
         android:id="@+id/Item6"
         android:layout_width="177dp"
@@ -392,54 +354,6 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/Item8"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="110dp"
-        android:layout_below="@+id/Item7"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/holo_blue_light"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/Item9"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="110dp"
-        android:layout_below="@+id/Item8"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/holo_blue_light"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/Item10"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="110dp"
-        android:layout_below="@+id/Item9"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/holo_blue_light"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <EditText
         android:id="@+id/editTextNumberDecimal11"
         android:layout_width="84dp"
         android:layout_height="53dp"
@@ -456,39 +370,6 @@
         android:layout_height="53dp"
         android:layout_toEndOf="@+id/Item7"
         android:layout_alignTop="@+id/Item7"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal13"
-        android:layout_width="84dp"
-        android:layout_height="53dp"
-        android:layout_toEndOf="@+id/Item8"
-        android:layout_alignTop="@+id/Item8"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal14"
-        android:layout_width="84dp"
-        android:layout_height="53dp"
-        android:layout_toEndOf="@+id/Item9"
-        android:layout_alignTop="@+id/Item9"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal15"
-        android:layout_width="84dp"
-        android:layout_height="53dp"
-        android:layout_toEndOf="@+id/Item10"
-        android:layout_alignTop="@+id/Item10"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Price"
