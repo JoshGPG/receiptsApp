@@ -57,7 +57,7 @@ public class ListItemsActivity extends AppCompatActivity {
         });
 
         TextView textView = findViewById(R.id.textView);
-        textView.setText(Html.fromHtml("<u>" + listName + "</u>"));
+        textView.setText(Html.fromHtml(listName));
 
         // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()

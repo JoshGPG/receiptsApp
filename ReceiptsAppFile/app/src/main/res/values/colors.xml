@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="groceriesColor">#D57979</color>
+    <color name="clothingColor">#5A7D61</color>
+    <color name="electronicsColor">#62688E</color>
+    <color name="healthColor">#B3AA64</color>
+    <color name="homeColor">#6D9087</color>
+    <color name="entertainmentColor">#BE9C85</color>
+    <color name="defaultColor">#FFFFFF</color>
 </resources>

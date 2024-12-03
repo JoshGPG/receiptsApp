@@ -28,6 +28,7 @@ public class Budget extends AppCompatActivity {
         });
 
         user = getIntent().getParcelableExtra("user");
+        BudgetClass budget = (BudgetClass) getIntent().getSerializableExtra("budget");
 
         ImageButton backButton = findViewById(R.id.backBtn);
         backButton.setOnClickListener(new View.OnClickListener() {

@@ -29,8 +29,8 @@ public interface ApiService {
     @GET("checkUsername")
     Call<UsernameCheckResponse> checkUsernameExists(@Query("username") String username);
 
-    @GET("/purchases/{userId}")
-    Call<PurchasesResponse> getPurchases(@Path("userId") int userId);
+//    @GET("/purchases/{userId}")
+//    Call<PurchasesResponse> getPurchases(@Path("userId") int userId);
 
     @GET("/purchases/{userId}/{category}")
     Call<PurchasesResponse> getPurchasesByCategory(
@@ -50,8 +50,14 @@ public interface ApiService {
     @GET("/purchasesByIds")
     Call<PurchasesResponse> getPurchasesByIds(@Query("ids") String purchaseIds);
 
-    @GET("listItems/{listId}")
-    Call<PurchasesResponse> getPurchasesByListId(@Path("listId") int listId);
+//    @GET("listItems/{listId}")
+//    Call<PurchasesResponse> getPurchasesByListId(@Path("listId") int listId);
+
+    @GET("budget/{userId}")
+    Call<BudgetResponse> getBudget(@Path("userId") int userId);
+
+    @POST("/budget")
+    Call<Void> addBudget(@Body BudgetClass budget);
 
 
 }

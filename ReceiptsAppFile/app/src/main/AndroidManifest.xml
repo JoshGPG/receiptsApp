@@ -23,6 +23,9 @@
 <!--            android:name=".Categories"-->
 <!--            android:exported="false" />-->
         <activity
+            android:name=".SetBudgetPage"
+            android:exported="false" />
+        <activity
             android:name=".ListItemsActivity"
             android:exported="false" />
         <activity

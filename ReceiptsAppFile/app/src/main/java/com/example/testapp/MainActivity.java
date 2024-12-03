@@ -23,6 +23,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -56,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:3000/") // Ensure your base URL is correct
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService apiService = retrofit.create(ApiService.class);
+
         if (user != null) {
             String name = user.getName();
             int userId = user.getUserId();
@@ -86,13 +99,42 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button budgetButton = findViewById(R.id.budgetBtn);
-        budgetButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Budget.class);
-                intent.putExtra("user", user);  // Pass the Parcelable User object
-                startActivity(intent);
-            }
+        budgetButton.setOnClickListener(v -> {
+            apiService.getBudget(user.getUserId()).enqueue(new Callback<BudgetResponse>() {
+                @Override
+                public void onResponse(Call<BudgetResponse> call, Response<BudgetResponse> response) {
+                    Toast.makeText(MainActivity.this, "IM HERE", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful() && response.body() != null) {
+                        BudgetResponse budgetResponse = response.body();
+                        if (budgetResponse.isSuccess()) {
+                            // Budget exists, navigate to BudgetPage
+                            Intent intent = new Intent(MainActivity.this, Budget.class);
+                            intent.putExtra("user", user);
+                            intent.putExtra("budget", budgetResponse.getBudget());
+                            startActivity(intent);
+                        } else {
+
+                            Intent intent = new Intent(MainActivity.this, SetBudgetPage.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+//                            System.out.println("Response not successful or body null");
+//                            Toast.makeText(MainActivity.this, "Failed to load budget info", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+//                        Intent intent = new Intent(MainActivity.this, SetBudgetPage.class);
+//                        intent.putExtra("user", user);
+//                        startActivity(intent);
+                        System.out.println("Response not successful or body null");
+                        Toast.makeText(MainActivity.this, "Failed to load budget info", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<BudgetResponse> call, Throwable t) {
+                    System.out.println("API call failed: " + t.getMessage());
+                    Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         Button categoriesButton = findViewById(R.id.categoriesBtn);
@@ -150,9 +192,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
 
     }
 

@@ -3,6 +3,7 @@ package com.example.testapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -69,6 +70,9 @@ public class ReceiptByCategory extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(purchasesAdapter);
+
+        TextView titleText = findViewById(R.id.categoriesText);
+        titleText.setText(category);
 
         // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
