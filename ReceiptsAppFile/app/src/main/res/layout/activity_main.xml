@@ -9,6 +9,15 @@
     tools:context=".MainActivity"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:elevation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item1"
         android:layout_width="match_parent"
@@ -102,7 +111,7 @@
             app:layout_constraintVertical_bias="0.248" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
@@ -228,22 +237,6 @@
                 android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/hamburger_two" />
 
-
-            <!--            <ImageButton-->
-            <!--                android:id="@+id/hamburger_icon"-->
-            <!--                android:layout_width="35dp"-->
-            <!--                android:layout_height="35dp"-->
-            <!--                android:layout_marginStart="24dp"-->
-            <!--                android:layout_marginTop="28dp"-->
-            <!--                android:adjustViewBounds="true"-->
-            <!--                android:background="?attr/selectableItemBackground"-->
-            <!--                android:backgroundTint="#00FFFFFF"-->
-            <!--                android:scaleType="fitCenter"-->
-            <!--                app:tint="#00FFFFFF"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:srcCompat="@drawable/hamburger_two" />-->
-
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -256,10 +249,6 @@
         android:elevation="15dp"
         app:itemTextAppearance="@style/CustomNavTextStyle"
         android:background="?attr/colorPrimary"
-        app:menu="@menu/drawer_menu" /> <!-- Reference to your menu resource -->
+        app:menu="@menu/drawer_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
-
-
-
-    <!-- To prevent tinting -->
 

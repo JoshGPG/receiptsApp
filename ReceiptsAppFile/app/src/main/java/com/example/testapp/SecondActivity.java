@@ -38,7 +38,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_second);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.item1), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 
@@ -98,7 +98,7 @@ public class SecondActivity extends AppCompatActivity {
                     return;
                 }
 
-                User newUser = new User(name, username, password);
+                User newUser = new User(69, name, username, password);
 
                 apiService.addUser(newUser).enqueue(new Callback<Void>() {
                     @Override

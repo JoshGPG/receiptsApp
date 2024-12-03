@@ -17,9 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CreatePage" />
+            android:name=".CreatePage"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Categories"-->
+<!--            android:exported="false" />-->
         <activity
-            android:name=".Categories"
+            android:name=".RecentPage"
             android:exported="false" />
         <activity
             android:name=".ClassifyActivity"
@@ -48,7 +52,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
