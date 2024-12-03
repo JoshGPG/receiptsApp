@@ -23,6 +23,18 @@
 <!--            android:name=".Categories"-->
 <!--            android:exported="false" />-->
         <activity
+            android:name=".ListItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Budget"
+            android:exported="false" />
+        <activity
+            android:name=".ReceiptByCategory"
+            android:exported="false" />
+        <activity
+            android:name=".EditDeleteReceipt"
+            android:exported="false" />
+        <activity
             android:name=".RecentPage"
             android:exported="false" />
         <activity

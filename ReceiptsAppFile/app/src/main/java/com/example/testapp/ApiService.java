@@ -2,8 +2,10 @@ package com.example.testapp;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -29,5 +31,27 @@ public interface ApiService {
 
     @GET("/purchases/{userId}")
     Call<PurchasesResponse> getPurchases(@Path("userId") int userId);
+
+    @GET("/purchases/{userId}/{category}")
+    Call<PurchasesResponse> getPurchasesByCategory(
+            @Path("userId") int userId,
+            @Path("category") String category
+    );
+
+    @PUT("/updatePurchase")
+    Call<Void> updatePurchase(@Body PurchaseUpdateRequest purchaseUpdateRequest);
+
+    @DELETE("/deletePurchase/{id}")
+    Call<Void> deletePurchase(@Path("id") int purchaseId);
+
+    @GET("/lists/{userId}")
+    Call<ListsResponse> getLists(@Path("userId") int userId);
+
+    @GET("/purchasesByIds")
+    Call<PurchasesResponse> getPurchasesByIds(@Query("ids") String purchaseIds);
+
+    @GET("listItems/{listId}")
+    Call<PurchasesResponse> getPurchasesByListId(@Path("listId") int listId);
+
 
 }

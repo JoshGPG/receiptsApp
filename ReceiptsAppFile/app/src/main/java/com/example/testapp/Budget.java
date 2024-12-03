@@ -3,50 +3,41 @@ package com.example.testapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class StartPage extends AppCompatActivity {
+public class Budget extends AppCompatActivity {
 
+    private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_start_page);
+        setContentView(R.layout.activity_budget);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button loginButton = findViewById(R.id.loginButton);
-        Button createButton = findViewById(R.id.createButton);
-        
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        user = getIntent().getParcelableExtra("user");
+
+        ImageButton backButton = findViewById(R.id.backBtn);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartPage.this, LoginPage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        createButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StartPage.this, CreatePage.class);
+                Intent intent = new Intent(Budget.this, MainActivity.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
                 startActivity(intent);
                 finish();
             }
         });
     }
-
-
 }

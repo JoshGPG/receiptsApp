@@ -53,7 +53,7 @@ public class CreatePage extends AppCompatActivity {
         buttonCreateUser = findViewById(R.id.createButton);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")  // Ensure this matches your server's address and port
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -72,7 +72,6 @@ public class CreatePage extends AppCompatActivity {
                     return;
                 }
 
-                // Check if username already exists
                 apiService.checkUsernameExists(usernameSend).enqueue(new Callback<UsernameCheckResponse>() {
                     @Override
                     public void onResponse(Call<UsernameCheckResponse> call, Response<UsernameCheckResponse> response) {
@@ -81,10 +80,8 @@ public class CreatePage extends AppCompatActivity {
                             Log.d("CreatePage", "Username exists: " + exists);
 
                             if (!exists) {
-                                // Username does not exist, proceed to create user
                                 createUser(apiService, usernameSend, passwordSend, nameSend);
                             } else {
-                                // Username already exists
                                 Toast.makeText(CreatePage.this, "Username already taken", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -114,7 +111,7 @@ public class CreatePage extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CreatePage.this, "User created successfully!", Toast.LENGTH_SHORT).show();
-                    finish();  // Go back to the previous screen
+                    finish();
                 } else {
                     Toast.makeText(CreatePage.this, "Failed to create user", Toast.LENGTH_SHORT).show();
                 }

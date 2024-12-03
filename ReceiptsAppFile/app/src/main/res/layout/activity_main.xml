@@ -28,7 +28,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/editBtn"
+            android:id="@+id/budgetBtn"
             android:layout_width="180dp"
             android:layout_height="250dp"
             android:background="@drawable/boxy_button"
@@ -188,18 +188,18 @@
             app:layout_constraintTop_toTopOf="@+id/categoriesBtn" />
 
         <TextView
-            android:id="@+id/categoriesText"
+            android:id="@+id/budgetText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="33dp"
             android:elevation="10dp"
-            android:text="@string/edit_or_nremove"
+            android:text="@string/budget"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/editBtn"
-            app:layout_constraintTop_toTopOf="@+id/editBtn" />
+            app:layout_constraintStart_toStartOf="@+id/budgetBtn"
+            app:layout_constraintTop_toTopOf="@+id/budgetBtn" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
