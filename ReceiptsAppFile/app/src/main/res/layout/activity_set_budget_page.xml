@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetBudgetPage">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="208dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Set Budget"
+        android:textColor="#202020"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/budgetEditText"
+        android:layout_width="215dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="48dp"
+        android:hint="Enter budget"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/monthsEditText"
+        android:layout_width="215dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="27dp"
+        android:hint="Enter months"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budgetEditText" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="216dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/boxy_button"
+        android:backgroundTint="#EFEFEF"
+        android:elevation="6dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#3E3E3E"
+        android:text="SET"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthsEditText" />
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:padding="16dp">-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/budgetEditText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="Enter budget"-->
+    <!--            android:inputType="numberDecimal" />-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/monthsEditText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="Enter months"-->
+    <!--            android:inputType="number" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/saveButton"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Save" />-->
+    <!--    </LinearLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

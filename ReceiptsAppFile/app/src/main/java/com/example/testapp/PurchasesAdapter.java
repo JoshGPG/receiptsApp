@@ -1,9 +1,11 @@
 package com.example.testapp;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -115,6 +117,37 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.Purc
 
         String formattedDate = purchase.getDatePurchased().split("T")[0]; // Exclude the time part
         holder.datePurchasedTextView.setText("Date: " + formattedDate);
+
+        // Alternate colors for the CardView background based on position
+        Context context = holder.itemView.getContext();
+        int color;
+
+        switch (position % 6) { // Alternate between six colors
+            case 0:
+                color = ContextCompat.getColor(context, R.color.groceriesColor);
+                break;
+            case 1:
+                color = ContextCompat.getColor(context, R.color.clothingColor);
+                break;
+            case 2:
+                color = ContextCompat.getColor(context, R.color.electronicsColor);
+                break;
+            case 3:
+                color = ContextCompat.getColor(context, R.color.healthColor);
+                break;
+            case 4:
+                color = ContextCompat.getColor(context, R.color.homeColor);
+                break;
+            case 5:
+                color = ContextCompat.getColor(context, R.color.entertainmentColor);
+                break;
+            default:
+                color = ContextCompat.getColor(context, R.color.defaultColor);
+                break;
+        }
+
+        // Apply the color to the CardView
+        ((androidx.cardview.widget.CardView) holder.itemView).setCardBackgroundColor(color);
 
         // Handle item clicks
         holder.itemView.setOnClickListener(v -> {
