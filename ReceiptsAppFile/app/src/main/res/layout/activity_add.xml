@@ -34,7 +34,7 @@
         android:textColor="#070707" />
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/BackButton"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -85,7 +85,7 @@
 
         <!-- Add Items button always overlayed -->
         <Button
-            android:id="@+id/add_more_button"
+            android:id="@+id/AddButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

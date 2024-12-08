@@ -33,6 +33,15 @@ public class Purchase implements Parcelable {
     public String getCategory() { return category; }
     public String getDatePurchased() { return datePurchased; }
 
+    public Purchase(int id, int userId, String itemName, double price, String category, String datePurchased) {
+        this.id = id;
+        this.userId = userId;
+        this.itemName = itemName;
+        this.price = price;
+        this.category = category;
+        this.datePurchased = datePurchased;
+    }
+
     // Setters
     public void setId(int purchase_id) {
         this.id = purchase_id;
