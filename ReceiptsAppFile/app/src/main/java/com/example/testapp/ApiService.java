@@ -59,5 +59,8 @@ public interface ApiService {
     @POST("/budget")
     Call<Void> addBudget(@Body BudgetClass budget);
 
+    @POST("/addListWithPurchases")
+    Call<Void> addListWithPurchases(@Body AddListRequest request);
+
 
 }
