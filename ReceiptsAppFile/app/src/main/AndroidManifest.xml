@@ -67,6 +67,9 @@
             android:name=".SecondActivity"
             android:exported="false" />
         <activity
+            android:name=".AddActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
                 startActivity(intent);
             }
         });
@@ -151,7 +152,8 @@ public class MainActivity extends AppCompatActivity {
         recentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecentPage.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
                 startActivity(intent);
             }
         });

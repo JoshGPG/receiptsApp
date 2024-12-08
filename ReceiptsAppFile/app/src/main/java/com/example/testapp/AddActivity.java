@@ -35,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 
 public class AddActivity extends AppCompatActivity {
 
+    private User user;
     private TextView textView;
     private String stringToken = "LA-b8373a79433f4ba38d1487c23352a6b3984ebef9250a4bfa88457fb659498d01";
     private String stringURLEndPoint = "https://api.llama-api.com/chat/completions";
@@ -49,14 +50,18 @@ public class AddActivity extends AppCompatActivity {
             return insets;
         });
 
+        user = getIntent().getParcelableExtra("user");
+        
         textView = findViewById(R.id.Category1);
+
 //        EditText editText = findViewById(R.id.categories);
 
-        Button addButton = findViewById(R.id.back_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddActivity.this, MainActivity.class);
+                intent.putExtra("user", user);  // Pass the Parcelable User object
                 startActivity(intent);
                 finish();
             }
