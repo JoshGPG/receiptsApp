@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,12 +16,17 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +41,7 @@ import com.android.volley.toolbox.Volley;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -267,9 +274,19 @@ public class AddActivity extends AppCompatActivity {
             return;
         }
 
-        if (!isValidDate(datePurchasedText)) {
-            Toast.makeText(this, "Invalid date format. Use yyyy-mm-dd", Toast.LENGTH_SHORT).show();
-            return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (!isValidDate(datePurchasedText)) {
+                Toast.makeText(this, "Invalid date format or value. Use yyyy-mm-dd and ensure the date is valid.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+        for (TextView categoryTextView : categoryTextViews) {
+            String category = categoryTextView.getText().toString().trim();
+            if (category.isEmpty() || category.equalsIgnoreCase("Error categorizing")) {
+                Toast.makeText(this, "Please complete categorization for all items.", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         List<Purchase> purchases = new ArrayList<>();
@@ -299,7 +316,7 @@ public class AddActivity extends AppCompatActivity {
         for (Purchase purchase : purchases) {
             apiService.addPurchase(purchase).enqueue(new Callback<ResponseBody>() {
                 @Override
-                public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         try {
                             String responseBody = response.body().string();
@@ -369,8 +386,17 @@ public class AddActivity extends AppCompatActivity {
         return sb.toString();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean isValidDate(String date) {
-        String datePattern = "^\\d{4}-\\d{2}-\\d{2}$";
-        return date.matches(datePattern);
+        try {
+            // Parse the date string using the LocalDate class
+            LocalDate parsedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+            // If parsing succeeds, the date is valid
+            return true;
+        } catch (DateTimeParseException e) {
+            // If parsing fails, the date is invalid
+            return false;
+        }
     }
 }
