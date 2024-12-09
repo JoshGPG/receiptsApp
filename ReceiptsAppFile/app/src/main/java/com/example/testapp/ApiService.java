@@ -1,5 +1,8 @@
 package com.example.testapp;
 
+import com.google.gson.JsonObject;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -50,19 +53,17 @@ public interface ApiService {
     @GET("/purchasesByIds")
     Call<PurchasesResponse> getPurchasesByIds(@Query("ids") String purchaseIds);
 
-//    @GET("listItems/{listId}")
-//    Call<PurchasesResponse> getPurchasesByListId(@Path("listId") int listId);
-
     @GET("budget/{userId}")
     Call<BudgetResponse> getBudget(@Path("userId") int userId);
 
     @POST("/budget")
     Call<Void> addBudget(@Body BudgetClass budget);
 
-//    @POST("/addListWithPurchases")
-//    Call<Void> addListWithPurchases(@Body AddListRequest request);
-    @POST("/addPurchase")
-    Call<Void> addPurchase(@Body Purchase purchase);
+    @POST("/purchases")
+    Call<ResponseBody> addPurchase(@Body Purchase purchase);
+
+    @POST("/addList")
+    Call<Void> addList(@Body AddListRequest addListRequest);
 
 
 

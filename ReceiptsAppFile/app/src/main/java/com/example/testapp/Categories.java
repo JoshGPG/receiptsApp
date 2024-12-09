@@ -30,7 +30,7 @@ public class Categories extends AppCompatActivity {
             return insets;
         });
 
-        ImageButton backButton = findViewById(R.id.backBtn);
+//        ImageButton backButton = findViewById(R.id.backBtn);
         Button groceriesButton = findViewById(R.id.groceriesBtn);
         Button clothingButton = findViewById(R.id.clothingBtn);
         Button electronicsButton = findViewById(R.id.electronicsBtn);
@@ -47,7 +47,7 @@ public class Categories extends AppCompatActivity {
         homeButton.setOnClickListener(v -> openReceiptListPage("Home"));
         entertainmentButton.setOnClickListener(v -> openReceiptListPage("Entertainment"));
 
-
+        ImageButton backButton = findViewById(R.id.backBtn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
