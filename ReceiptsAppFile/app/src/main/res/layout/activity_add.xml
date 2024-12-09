@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,758 +7,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Date Purchased always on top -->
-
-    <!-- List Name always on top -->
-
+    <!-- Back Button -->
     <ImageButton
         android:id="@+id/BackButton"
         android:layout_width="64dp"
-        android:layout_height="63dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
-    <!-- Add Items button always overlayed -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-    <EditText
-        android:id="@+id/DatePurchased"
-        android:layout_width="256dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
-        android:hint="Date Purchased (yyyy-mm-dd)"
-        android:inputType="text"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Add Receipt"
+        android:textColor="#202020"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListName" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ListName"
-        android:layout_width="257dp"
-        android:layout_height="44dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="40dp"
-        android:ems="10"
+        android:layout_width="311dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="112dp"
         android:hint="Receipt Name"
-        android:inputType="text"
-        android:textColorHint="#000000"
-        android:visibility="visible"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/AddButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="45dp"
-        android:background="#4CAF50"
-        android:text="Add Items"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/DatePurchased"
+        android:layout_width="311dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:hint="Date Purchased (yyyy-mm-dd)"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListName" />
+
+    <!-- Add Items Button -->
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="411dp"
+        android:layout_height="530dp"
+        app:layout_constraintBottom_toTopOf="@+id/categorize_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DatePurchased"
+        app:layout_constraintVertical_bias="0.386">
+
+        <LinearLayout
+            android:id="@+id/dynamic_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <Button
         android:id="@+id/categorize_button"
-        android:layout_width="377dp"
-        android:layout_height="51dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="20dp"
-        android:background="@android:color/holo_green_light"
-        android:onClick="buttonClassify"
+        android:layout_width="175dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/boxy_button"
+        android:backgroundTint="#EFEFEF"
+        android:elevation="6dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#3E3E3E"
         android:text="Categorize"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/AddButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/Category1"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="39dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DatePurchased" />
-
-    <TextView
-        android:id="@+id/Category2"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category1" />
-
-    <TextView
-        android:id="@+id/Category3"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category2" />
-
-    <TextView
-        android:id="@+id/Category4"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category3" />
-
-    <TextView
-        android:id="@+id/Category5"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category4" />
-
-    <TextView
-        android:id="@+id/Category6"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category5" />
-
-    <TextView
-        android:id="@+id/Category7"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Category"
-        android:textColor="#070707"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category6" />
-
-    <EditText
-        android:id="@+id/Price1"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DatePurchased" />
-
-    <EditText
-        android:id="@+id/Price2"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price1" />
-
-    <EditText
-        android:id="@+id/Price3"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price2" />
-
-    <EditText
-        android:id="@+id/Price4"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price3" />
-
-    <EditText
-        android:id="@+id/Price5"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price4" />
-
-    <EditText
-        android:id="@+id/Price6"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price5" />
-
-    <EditText
-        android:id="@+id/Price7"
-        android:layout_width="83dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price6" />
-
-    <EditText
-        android:id="@+id/Item1"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="39dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
+    <Button
+        android:id="@+id/AddButton"
+        android:layout_width="175dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/boxy_button"
+        android:backgroundTint="#EFEFEF"
+        android:elevation="6dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#3E3E3E"
+        android:text="Add"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/DatePurchased" />
-
-    <EditText
-        android:id="@+id/Item2"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item1" />
-
-    <EditText
-        android:id="@+id/Item3"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item2" />
-
-    <EditText
-        android:id="@+id/Item4"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item3" />
-
-    <EditText
-        android:id="@+id/Item5"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item4" />
-
-    <EditText
-        android:id="@+id/Item6"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item5" />
-
-    <EditText
-        android:id="@+id/Item7"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/ListName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Input Item"
-        android:inputType="text"
-        android:padding="0dp"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Category1"
-        app:layout_constraintTop_toBottomOf="@+id/Item6" />
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:id="@+id/main"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="#F0F0F0">-->
-
-<!--    &lt;!&ndash; Back button always on top &ndash;&gt;-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category4"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="413dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#070707" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category3"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="19dp"-->
-<!--        android:layout_marginTop="328dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#070707" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/BackButton"-->
-<!--        android:layout_width="75dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_marginStart="23dp"-->
-<!--        android:layout_marginTop="36dp"-->
-<!--        android:background="@android:color/black"-->
-<!--        android:text="Back"-->
-<!--        android:textColor="@android:color/white" />-->
-
-<!--    &lt;!&ndash; List Name always on top &ndash;&gt;-->
-<!--    <EditText-->
-<!--        android:id="@+id/ListName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_marginStart="139dp"-->
-<!--        android:layout_marginTop="93dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="List Name"-->
-<!--        android:inputType="text"-->
-<!--        android:text="Name"-->
-<!--        android:textColorHint="#000000"-->
-<!--        android:visibility="visible"-->
-<!--        tools:visibility="visible" />-->
-
-<!--    &lt;!&ndash; Date Purchased always on top &ndash;&gt;-->
-<!--    <EditText-->
-<!--        android:id="@+id/DatePurchased"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:layout_marginEnd="61dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Date Purchased (yyyy-mm-dd)"-->
-<!--        android:inputType="text" />-->
-
-<!--    &lt;!&ndash; Add Items button always on bottom &ndash;&gt;-->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="153dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:background="@android:color/white"-->
-<!--        android:visibility="visible">-->
-
-<!--        &lt;!&ndash; Add Items button always overlayed &ndash;&gt;-->
-<!--        <Button-->
-<!--            android:id="@+id/AddButton"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="bottom"-->
-<!--            android:layout_margin="16dp"-->
-<!--            android:background="#4CAF50"-->
-<!--            android:text="Add Items"-->
-<!--            android:textColor="@android:color/black"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/categorize_button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="bottom"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="80dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:layout_marginBottom="16dp"-->
-<!--            android:background="@android:color/holo_green_light"-->
-<!--            android:onClick="buttonClassify"-->
-<!--            android:text="Categorize"-->
-<!--            android:textColor="@android:color/black"-->
-<!--            android:textSize="20sp"-->
-<!--            android:visibility="visible" />-->
-
-<!--    </RelativeLayout>-->
-
-<!--    &lt;!&ndash; Categorize button always on bottom &ndash;&gt;-->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@android:color/white">-->
-
-<!--    </RelativeLayout>-->
-
-<!--    &lt;!&ndash; Rest of the EditTexts &ndash;&gt;-->
-<!--    <EditText-->
-<!--        android:id="@+id/Price1"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item1"-->
-<!--        android:layout_alignTop="@+id/Item1"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price2"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item2"-->
-<!--        android:layout_alignTop="@+id/Item2"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price3"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item3"-->
-<!--        android:layout_alignTop="@+id/Item3"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price4"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item4"-->
-<!--        android:layout_alignTop="@+id/Item4"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category1"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="158dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category2"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="243dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category5"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="498dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:backgroundTint="#FFFFFF"-->
-<!--        android:backgroundTintMode="multiply"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000"-->
-<!--        app:autoSizeTextType="none" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item1"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_below="@+id/ListName"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item2"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_below="@+id/Item1"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item3"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_below="@+id/Item2"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item4"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_below="@+id/Item3"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item5"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_below="@+id/Item4"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price5"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item5"-->
-<!--        android:layout_alignTop="@+id/Item5"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/Category6"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_below="@+id/Category5"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/Category7"-->
-<!--        android:layout_width="83dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_below="@+id/Category6"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="#FFEB3B"-->
-<!--        android:text="Category"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="#000000" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item6"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_below="@+id/Item5"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Item7"-->
-<!--        android:layout_width="177dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_below="@+id/Item6"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:background="@android:color/holo_blue_light"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Input Item"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="0dp"-->
-<!--        android:textColor="@android:color/black"-->
-<!--        android:textSize="24sp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price6"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item6"-->
-<!--        android:layout_alignTop="@+id/Item6"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/Price7"-->
-<!--        android:layout_width="84dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_toEndOf="@+id/Item7"-->
-<!--        android:layout_alignTop="@+id/Item7"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="Price"-->
-<!--        android:inputType="numberDecimal" />-->
-
-
-<!--</RelativeLayout>-->
