@@ -30,7 +30,6 @@ public class Categories extends AppCompatActivity {
             return insets;
         });
 
-//        ImageButton backButton = findViewById(R.id.backBtn);
         Button groceriesButton = findViewById(R.id.groceriesBtn);
         Button clothingButton = findViewById(R.id.clothingBtn);
         Button electronicsButton = findViewById(R.id.electronicsBtn);

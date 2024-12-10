@@ -19,12 +19,10 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ListViewHold
     private List<ListData> lists;
     private OnItemClickListener onItemClickListener;
 
-    // Listener Interface
     public interface OnItemClickListener {
         void onItemClick(ListData list);
     }
 
-    // Constructor
     public ListsAdapter(List<ListData> lists, OnItemClickListener onItemClickListener) {
         this.lists = lists;
         this.onItemClickListener = onItemClickListener;
@@ -39,7 +37,7 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ListViewHold
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false); // Ensure your `list_item` layout is updated as per the earlier card-based layout
+                .inflate(R.layout.list_item, parent, false);
         return new ListViewHolder(view);
     }
 
@@ -47,11 +45,9 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ListViewHold
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         ListData list = lists.get(position);
 
-        // Set the list name and item count
         holder.listName.setText(list.getListName());
         holder.itemCount.setText("Items: " + list.getPurchases().split(",").length);
 
-        // Alternate colors based on the position
         Context context = holder.itemView.getContext();
         int color;
 
@@ -79,10 +75,8 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ListViewHold
                 break;
         }
 
-        // Apply the color to the CardView
         holder.cardView.setCardBackgroundColor(color);
 
-        // Set click listener
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(list);
@@ -101,9 +95,9 @@ public class ListsAdapter extends RecyclerView.Adapter<ListsAdapter.ListViewHold
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            listName = itemView.findViewById(R.id.listName); // Replace with your TextView ID for the list name
-            itemCount = itemView.findViewById(R.id.itemCount); // Replace with your TextView ID for item count
-            cardView = itemView.findViewById(R.id.cardView); // Add this in your `list_item` layout
+            listName = itemView.findViewById(R.id.listName);
+            itemCount = itemView.findViewById(R.id.itemCount);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 }

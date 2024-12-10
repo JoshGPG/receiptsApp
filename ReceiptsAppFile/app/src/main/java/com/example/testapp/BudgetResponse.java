@@ -6,7 +6,6 @@ public class BudgetResponse {
     private String message;
     private BudgetClass budget;
 
-    // Getters
     public boolean isSuccess() {
         return success;
     }
@@ -19,7 +18,6 @@ public class BudgetResponse {
         return budget;
     }
 
-    // Setters
     public void setSuccess(boolean success) {
         this.success = success;
     }

@@ -57,11 +57,10 @@ public class SecondActivity extends AppCompatActivity {
         resultTextView = findViewById(R.id.DatabaseWords);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")  // '10.0.2.2' is the special IP for localhost in Android Emulator
-                .addConverterFactory(GsonConverterFactory.create())  // Use Gson to parse JSON
+                .baseUrl("http://10.0.2.2:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-//         Create an instance of the API interface
         ApiService apiService = retrofit.create(ApiService.class);
 
         apiService.getUsers().enqueue(new Callback<List<User>>() {
@@ -81,7 +80,6 @@ public class SecondActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                // Handle failure
                 resultTextView.setText("Error: " + t.getMessage());
             }
         });

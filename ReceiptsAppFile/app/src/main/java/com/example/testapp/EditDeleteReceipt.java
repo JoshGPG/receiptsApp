@@ -7,20 +7,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Spinner;
-
 import com.google.gson.Gson;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -103,7 +103,6 @@ public class CreatePage extends AppCompatActivity {
     }
 
     private void createUser(ApiService apiService, String username, String password, String name) {
-        // Create a new user request
         CreateUser newUser = new CreateUser(name, username, password);
 
         apiService.createUser(newUser).enqueue(new Callback<Void>() {

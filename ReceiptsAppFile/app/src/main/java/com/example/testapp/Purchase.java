@@ -25,8 +25,6 @@ public class Purchase implements Parcelable {
     @SerializedName("date_purchased")
     private String datePurchased;
 
-    // Constructor, getters, and other methods here
-    // Getters
     public int getId() { return id; }
     public String getItemName() { return itemName; }
     public double getPrice() { return price; }
@@ -42,7 +40,6 @@ public class Purchase implements Parcelable {
         this.datePurchased = datePurchased;
     }
 
-    // Setters
     public void setId(int purchase_id) {
         this.id = purchase_id;
     }

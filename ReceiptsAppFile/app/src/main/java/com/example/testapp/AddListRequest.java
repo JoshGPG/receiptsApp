@@ -1,13 +1,9 @@
 package com.example.testapp;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 public class AddListRequest {
     private int userId;
     private String listName;
-    private String purchaseIds; // Comma-separated string of purchase IDs
+    private String purchaseIds;
 
     public AddListRequest(int userId, String listName, String purchaseIds) {
         this.userId = userId;

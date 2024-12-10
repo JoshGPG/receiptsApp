@@ -11,7 +11,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -19,10 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
@@ -63,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/") // Ensure your base URL is correct
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -76,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             String password = user.getPassword();
 
             Log.d("MainActivity", "Received User - ID: " + userId + ", Name: " + name + ", Username: " + username);
-//            System.out.println(userId);
             Toast.makeText(this, "Welcome, " + userId, Toast.LENGTH_SHORT).show();
         }
 
@@ -117,13 +112,8 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, SetBudgetPage.class);
                             intent.putExtra("user", user);
                             startActivity(intent);
-//                            System.out.println("Response not successful or body null");
-//                            Toast.makeText(MainActivity.this, "Failed to load budget info", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-//                        Intent intent = new Intent(MainActivity.this, SetBudgetPage.class);
-//                        intent.putExtra("user", user);
-//                        startActivity(intent);
                         System.out.println("Response not successful or body null");
                         Toast.makeText(MainActivity.this, "Failed to load budget info", Toast.LENGTH_SHORT).show();
                     }
@@ -176,14 +166,11 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Handle navigation item clicks
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Check if the logout item was clicked
                 if (item.getItemId() == R.id.logout_button) {
-                    // Handle logout here
                     Intent intent = new Intent(MainActivity.this, StartPage.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Clear the back stack
                     startActivity(intent);

@@ -21,9 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".CreatePage"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".Categories" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".SetBudgetPage"
             android:exported="false" />
@@ -42,10 +40,6 @@
         <activity
             android:name=".RecentPage"
             android:exported="false" />
-        <activity
-            android:name=".Classify.ClassifyActivity1"
-            android:exported="true"
-            android:theme="@style/Theme.TestAPP" />
         <activity
             android:name=".CreateAccount"
             android:exported="false" />

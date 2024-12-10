@@ -7,13 +7,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,9 +48,8 @@ public class LoginPage extends AppCompatActivity {
         password = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.loginButton);
 
-        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/")  // Change to your server's IP
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -75,31 +72,25 @@ public class LoginPage extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()) {
-                            // Login success - route to another page (another activity)
-//                            Intent intent = new Intent(LoginPage.this, MainActivity.class);  // Replace with your destination activity
-//                            startActivity(intent);
-//                            finish();
                             LoginResponse loginResponse = response.body();
                             Intent intent = new Intent(LoginPage.this, MainActivity.class);
 
-                            int userId = loginResponse.getUserId();  // Replace with actual userId
-                            String name = loginResponse.getName();  // Replace with actual name
-                            String username = loginResponse.getUsername();  // Replace with actual username
-                            String password = loginResponse.getPassword();  // Replace with actual password
+                            int userId = loginResponse.getUserId();
+                            String name = loginResponse.getName();
+                            String username = loginResponse.getUsername();
+                            String password = loginResponse.getPassword();
                             System.out.println(userId);
                             User user = new User(userId, name, username, password);
-                            intent.putExtra("user", user);  // Pass the Parcelable User object
+                            intent.putExtra("user", user);
                             startActivity(intent);
                             finish();
                         } else {
-                            // Login failed - show error message
                             Toast.makeText(LoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        // Handle failure (e.g., network issues)
                         Toast.makeText(LoginPage.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

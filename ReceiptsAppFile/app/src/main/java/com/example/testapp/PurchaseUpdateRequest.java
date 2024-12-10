@@ -16,7 +16,6 @@ public class PurchaseUpdateRequest {
     @SerializedName("category")
     private String category;
 
-    // Constructor
     public PurchaseUpdateRequest(int id, String itemName, double price, String category) {
         this.id = id;
         this.itemName = itemName;
@@ -24,7 +23,6 @@ public class PurchaseUpdateRequest {
         this.category = category;
     }
 
-    // Getters
     public int getId() {
         return id;
     }
@@ -41,7 +39,6 @@ public class PurchaseUpdateRequest {
         return category;
     }
 
-    // Setters
     public void setId(int id) {
         this.id = id;
     }

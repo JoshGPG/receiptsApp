@@ -43,7 +43,7 @@ public class SetBudgetPage extends AppCompatActivity {
         user = getIntent().getParcelableExtra("user");
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/") // Replace with your backend URL
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -69,7 +69,6 @@ public class SetBudgetPage extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(SetBudgetPage.this, "Budget set successfully!", Toast.LENGTH_SHORT).show();
 
-                    // Redirect to BudgetPage
                     Intent intent = new Intent(SetBudgetPage.this, Budget.class);
                     intent.putExtra("user", user);
                     intent.putExtra("budget", new BudgetClass(user.getUserId(), budget, months));

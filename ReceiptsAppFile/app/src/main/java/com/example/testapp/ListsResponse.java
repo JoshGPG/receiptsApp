@@ -12,13 +12,11 @@ public class ListsResponse {
     @SerializedName("lists")
     private List<ListData> lists;
 
-    // Constructor
     public ListsResponse(boolean success, List<ListData> lists) {
         this.success = success;
         this.lists = lists;
     }
 
-    // Getters and Setters
     public boolean isSuccess() {
         return success;
     }

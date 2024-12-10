@@ -57,7 +57,6 @@ public class User implements Parcelable {
     private String username;
     private String password;
 
-    // Constructor
     public User(int userId, String name, String username, String password) {
         this.userId = userId;
         this.name = name;
@@ -65,7 +64,6 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    // Parcelable constructor
     protected User(Parcel in) {
         userId = in.readInt();
         name = in.readString();
@@ -73,7 +71,6 @@ public class User implements Parcelable {
         password = in.readString();
     }
 
-    // Parcelable implementation
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -99,7 +96,6 @@ public class User implements Parcelable {
         dest.writeString(password);
     }
 
-    // Getters
     public int getUserId() { return userId; }
     public String getName() { return name; }
     public String getUsername() { return username; }

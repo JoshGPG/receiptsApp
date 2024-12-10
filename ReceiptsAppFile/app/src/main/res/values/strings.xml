@@ -26,12 +26,10 @@
     <string name="entertainment">Entertainment</string>
     <string name="home">Home</string>
     <string name="health">Health</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <!-- strings used for add add list -->
     <string name="date_hint">Date Purchased</string>
     <string name="open">Open navigation drawer</string>
     <string name="close">Close navigation drawer</string>

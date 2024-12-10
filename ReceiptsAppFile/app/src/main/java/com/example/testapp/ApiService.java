@@ -25,15 +25,11 @@ public interface ApiService {
     @POST("users")
     Call<Void> addUser(@Body User user);
 
-    // POST request for login
     @POST("login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
 
     @GET("checkUsername")
     Call<UsernameCheckResponse> checkUsernameExists(@Query("username") String username);
-
-//    @GET("/purchases/{userId}")
-//    Call<PurchasesResponse> getPurchases(@Path("userId") int userId);
 
     @GET("/purchases/{userId}/{category}")
     Call<PurchasesResponse> getPurchasesByCategory(

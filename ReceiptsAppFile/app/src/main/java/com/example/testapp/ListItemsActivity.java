@@ -43,7 +43,6 @@ public class ListItemsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Retrieve extras
         user = getIntent().getParcelableExtra("user");
         listName = getIntent().getStringExtra("list_name");
         purchases = getIntent().getStringExtra("purchases"); // Comma-separated purchase IDs
@@ -59,15 +58,12 @@ public class ListItemsActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.setText(Html.fromHtml(listName));
 
-        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3000/") // Replace with your server URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(ApiService.class);
 
-
-        // Set up RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -80,7 +76,6 @@ public class ListItemsActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(purchasesAdapter);
 
-        // Fetch purchases
         fetchPurchases(purchases);
     }
 

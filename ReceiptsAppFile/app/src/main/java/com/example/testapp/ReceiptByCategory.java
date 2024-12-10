@@ -49,7 +49,7 @@ public class ReceiptByCategory extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backBtn);
         backButton.setOnClickListener(view -> {
             Intent intent = new Intent(ReceiptByCategory.this, Categories.class);
-            intent.putExtra("user", user);  // Pass the Parcelable User object
+            intent.putExtra("user", user);
             startActivity(intent);
             finish();
         });
@@ -74,14 +74,12 @@ public class ReceiptByCategory extends AppCompatActivity {
         TextView titleText = findViewById(R.id.categoriesText);
         titleText.setText(category);
 
-        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(ApiService.class);
 
-        // Fetch purchases for the specified category
         fetchPurchasesByCategory();
     }
 
@@ -96,7 +94,7 @@ public class ReceiptByCategory extends AppCompatActivity {
             @Override
             public void onResponse(Call<PurchasesResponse> call, Response<PurchasesResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    purchasesAdapter.setPurchases(response.body().getPurchases());  // Update adapter with data
+                    purchasesAdapter.setPurchases(response.body().getPurchases());
                 } else {
                     Toast.makeText(ReceiptByCategory.this, "Failed to load purchases", Toast.LENGTH_SHORT).show();
                 }

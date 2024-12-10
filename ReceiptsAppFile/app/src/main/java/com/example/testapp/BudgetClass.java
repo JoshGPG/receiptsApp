@@ -7,10 +7,8 @@ public class BudgetClass implements Serializable {
     private double budget;
     private int months;
 
-    // Default Constructor
     public BudgetClass() {}
 
-    // Constructor with Parameters
     public BudgetClass(int userId, double budget, int months) {
         this.userId = userId;
         this.budget = budget;

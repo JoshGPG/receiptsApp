@@ -15,15 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -67,9 +64,8 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/") // Adjust for your local server setup
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -81,35 +77,29 @@ public class AddActivity extends AppCompatActivity {
                 numberOfItems = Integer.parseInt(numOfItemsString);
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Invalid number of items!", Toast.LENGTH_SHORT).show();
-                numberOfItems = 0; // Default to 0 if invalid
+                numberOfItems = 0;
             }
         } else {
-            numberOfItems = 0; // Default to 0 if not provided
+            numberOfItems = 0;
         }
 
         user = getIntent().getParcelableExtra("user");
-
-        // Initialize input fields for list name and date
         listNameEditText = findViewById(R.id.ListName);
         datePurchased = findViewById(R.id.DatePurchased);
 
-        // Create dynamic input fields
         ScrollView scrollView = findViewById(R.id.scrollView);
-        LinearLayout container = (LinearLayout) scrollView.getChildAt(0); // LinearLayout inside ScrollView
+        LinearLayout container = (LinearLayout) scrollView.getChildAt(0);
 
         for (int i = 0; i < numberOfItems; i++) {
             addInputFields(container, i);
         }
 
-        // Handle Add Items button
         Button addButton = findViewById(R.id.AddButton);
         addButton.setOnClickListener(view -> addItemsToDatabase());
 
-        // Handle Categorize button
         Button categorizeButton = findViewById(R.id.categorize_button);
         categorizeButton.setOnClickListener(this::buttonClassify);
 
-        // Handle Back button
         ImageButton backButton = findViewById(R.id.BackButton);
         backButton.setOnClickListener(view -> {
             Intent intent = new Intent(AddActivity.this, MainActivity.class);
@@ -120,61 +110,52 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void addInputFields(LinearLayout container, int index) {
-        // Create a CardView to wrap the row
         CardView cardView = new CardView(this);
-        cardView.setCardElevation(4); // Add shadow
-        cardView.setRadius(25); // Rounded corners
-        cardView.setCardBackgroundColor(Color.parseColor("#D57979")); // Red background color
-        cardView.setUseCompatPadding(true); // Add padding for compatibility
+        cardView.setCardElevation(4);
+        cardView.setRadius(25);
+        cardView.setCardBackgroundColor(Color.parseColor("#D57979"));
+        cardView.setUseCompatPadding(true);
 
-        // Create a horizontal layout for input row
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setPadding(24, 32, 24, 32);
 
-        // Create Category TextView
         TextView categoryTextView = new TextView(this);
         categoryTextView.setText("Category");
-        categoryTextView.setWidth(250); // Adjust width as needed
-        categoryTextView.setTextColor(Color.parseColor("#FFFFFF")); // Set white text color
+        categoryTextView.setWidth(250);
+        categoryTextView.setTextColor(Color.parseColor("#FFFFFF"));
         categoryTextView.setGravity(Gravity.CENTER);
-        categoryTextView.setTypeface(categoryTextView.getTypeface(), Typeface.BOLD); // Set text to bold
-//        categoryTextView.setPadding(10, 0, 10, 0);
+        categoryTextView.setTypeface(categoryTextView.getTypeface(), Typeface.BOLD);
         row.addView(categoryTextView);
         categoryTextViews.add(categoryTextView);
 
-        // Create Item EditText
         EditText itemEditText = new EditText(this);
         itemEditText.setHint("Input Item");
         itemEditText.setGravity(Gravity.CENTER);
-        itemEditText.setTextColor(Color.parseColor("#FFFFFF")); // Set white text color
-        itemEditText.setHintTextColor(Color.parseColor("#FFFFFF")); // Light gray hint color
-        itemEditText.setTypeface(itemEditText.getTypeface(), Typeface.BOLD); // Set text to bold
+        itemEditText.setTextColor(Color.parseColor("#FFFFFF"));
+        itemEditText.setHintTextColor(Color.parseColor("#FFFFFF"));
+        itemEditText.setTypeface(itemEditText.getTypeface(), Typeface.BOLD);
         itemEditText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
         itemEditText.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
         row.addView(itemEditText);
         itemEditTexts.add(itemEditText);
 
-        // Create Price EditText
         EditText priceEditText = new EditText(this);
         priceEditText.setHint("Price");
         priceEditText.setInputType(android.text.InputType.TYPE_CLASS_NUMBER | android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        priceEditText.setWidth(200); // Adjust width as needed
-        priceEditText.setTextColor(Color.parseColor("#FFFFFF")); // Set white text color
-        priceEditText.setHintTextColor(Color.parseColor("#FFFFFF")); // Light gray hint color
+        priceEditText.setWidth(200);
+        priceEditText.setTextColor(Color.parseColor("#FFFFFF"));
+        priceEditText.setHintTextColor(Color.parseColor("#FFFFFF"));
         priceEditText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
         priceEditText.setGravity(Gravity.CENTER);
-        priceEditText.setTypeface(priceEditText.getTypeface(), Typeface.BOLD); // Set text to bold
+        priceEditText.setTypeface(priceEditText.getTypeface(), Typeface.BOLD);
         row.addView(priceEditText);
         priceTextViews.add(priceEditText);
 
-        // Add the row to the CardView
         cardView.addView(row);
 
-        // Add the CardView to the container
         container.addView(cardView);
 
-        // Add margin to the CardView
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) cardView.getLayoutParams();
         params.setMargins(16, 16, 16, 16); // Adjust margins as needed
         cardView.setLayoutParams(params);
@@ -182,10 +163,9 @@ public class AddActivity extends AppCompatActivity {
 
     public void buttonClassify(View view) {
         for (int i = 0; i < itemEditTexts.size(); i++) {
-            final int index = i; // Preserve the index
+            final int index = i;
             String itemText = itemEditTexts.get(i).getText().toString().trim();
 
-            // Skip if the input field is empty
             if (itemText.isEmpty()) {
                 categoryTextViews.get(index).setText("No input provided");
                 continue;
@@ -194,7 +174,6 @@ public class AddActivity extends AppCompatActivity {
             String inputText = "Out of the six categories: Groceries, Clothing, Electronics, Health and Personal, Home, Entertainment, " +
                     "does " + itemText + " belong to? The answer only needs to be the category name.";
 
-            // Debug: Log the input text being sent
             Log.d("DEBUG", "Input text for API: " + inputText);
 
             JSONObject jsonObject = new JSONObject();
@@ -207,7 +186,6 @@ public class AddActivity extends AppCompatActivity {
                 messagesArray.put(messageObject);
                 jsonObject.put("messages", messagesArray);
 
-                // Debug: Log the API request payload
                 Log.d("DEBUG", "API Request Payload: " + jsonObject.toString());
 
             } catch (JSONException e) {
@@ -219,7 +197,6 @@ public class AddActivity extends AppCompatActivity {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, stringURLEndPoint, jsonObject,
                     response -> {
                         try {
-                            // Debug: Log the API response
                             Log.d("DEBUG", "API Response: " + response.toString());
 
                             String output = response.getJSONArray("choices")
@@ -234,7 +211,6 @@ public class AddActivity extends AppCompatActivity {
                         }
                     },
                     error -> {
-                        // Debug: Log the error from the API call
                         Log.e("DEBUG", "API Error: " + error.toString());
                         categoryTextViews.get(index).setText("Error categorizing");
                     }) {
@@ -245,14 +221,12 @@ public class AddActivity extends AppCompatActivity {
                     headers.put("Content-Type", "application/json");
                     headers.put("Authorization", "Bearer " + stringToken);
 
-                    // Debug: Log the headers
                     Log.d("DEBUG", "Request Headers: " + headers.toString());
 
                     return headers;
                 }
             };
 
-            // Set a retry policy with increased timeout
             RetryPolicy retryPolicy = new DefaultRetryPolicy(
                     60000, // Timeout in milliseconds
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -260,7 +234,6 @@ public class AddActivity extends AppCompatActivity {
             );
             request.setRetryPolicy(retryPolicy);
 
-            // Add the request to the Volley queue
             Volley.newRequestQueue(this).add(request);
         }
     }
@@ -325,7 +298,6 @@ public class AddActivity extends AppCompatActivity {
 
                             Log.d("AddActivity", "Added purchase ID: " + purchaseId);
 
-                            // If all purchases are processed, add the list
                             if (purchaseIds.size() == purchases.size()) {
                                 addListToDatabase(listName, purchaseIds);
                             }
@@ -389,13 +361,9 @@ public class AddActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean isValidDate(String date) {
         try {
-            // Parse the date string using the LocalDate class
             LocalDate parsedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-            // If parsing succeeds, the date is valid
             return true;
         } catch (DateTimeParseException e) {
-            // If parsing fails, the date is invalid
             return false;
         }
     }
