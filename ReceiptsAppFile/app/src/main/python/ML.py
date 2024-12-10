@@ -1,96 +1,121 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import io
-import json
-import os
+def load_keras_model(model_path):
+    """
+    Load a .keras model from the specified path.
+    """
+    try:
+        model = tf.keras.models.load_model(model_path)
+        print(f"Model loaded successfully from: {model_path}")
+        return model
+    except Exception as e:
+        print(f"Error loading model: {e}")
+        return None
+def preprocess_data(data):
+        """
+        Preprocess the data to ensure it matches the model input requirements.
+        """
+    # Ensure 'date_purchased' is datetime
+    data['date_purchased'] = pd.to_datetime(data['date_purchased'], errors='coerce')
+    data['price'] = pd.to_numeric(data['price'], errors='coerce').fillna(0)
 
-
-def load_data(file_content):
-    data = pd.read_csv(io.StringIO(file_content))
-    data['date_purchased'] = pd.to_datetime(data['date_purchased'])
-    return data
-
-def get_recent_data(user_id, data, months=3):
-    user_data = data[data['user_id'] == user_id]
-    latest_date = user_data['date_purchased'].max()
-    start_date = latest_date - pd.DateOffset(months=months)
-    recent_data = user_data[(user_data['date_purchased'] >= start_date) & (user_data['date_purchased'] <= latest_date)]
-    return recent_data
-
-def calculate_spending_proportion(recent_data):
-    if recent_data.empty:
-        return pd.DataFrame(), []
-    recent_data['date_purchased'] = pd.to_datetime(recent_data['date_purchased'], errors='coerce')
-    recent_data['price'] = pd.to_numeric(recent_data['price'], errors='coerce').fillna(0)
-    recent_data['month'] = recent_data['date_purchased'].dt.to_period('M')
-    monthly_total = recent_data.groupby('month')['price'].sum()
-    monthly_spending = recent_data.groupby(['month', 'category'])['price'].sum().unstack(fill_value=0)
+    # Group by month and category
+    data['month'] = data['date_purchased'].dt.to_period('M')
+    monthly_total = data.groupby('month')['price'].sum()
+    monthly_spending = data.groupby(['month', 'category'])['price'].sum().unstack(fill_value=0)
     monthly_percentage = monthly_spending.div(monthly_total, axis=0).fillna(0)
+
+    # Ensure fixed categories (e.g., 10 input features)
     categories = ['clothing', 'entertainment', 'electronics', 'home', 'health and personal', 'groceries']
-    for category in categories:
-        if category not in monthly_percentage.columns:
-            monthly_percentage[category] = 0
-    monthly_percentage = monthly_percentage[categories]
+    while len(categories) < 10:
+        categories.append(f'category_{len(categories) + 1}')
+
+    monthly_percentage = monthly_percentage.reindex(columns=categories, fill_value=0)
     return monthly_percentage, categories
+def predict_budget_allocation(model, data, total_budget):
 
-def predict_next_month_proportion(monthly_percentage, categories):
-    X_train = monthly_percentage.values
-    if X_train.shape[0] < 3:
-        X_train = np.pad(X_train, ((3 - X_train.shape[0], 0), (0, 0)), 'constant')
-    model = tf.keras.Sequential([
-        tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-        tf.keras.layers.Dense(32, activation='relu'),
-        tf.keras.layers.Dense(len(categories), activation='softmax')
-    ])
-    model.compile(optimizer='adam', loss='mse')
-    model.fit(X_train, X_train, epochs=10, verbose=0)
-    predicted_next_month_proportion = model.predict(np.array([X_train[-1]]))
-    predicted_next_month_proportion = np.clip(predicted_next_month_proportion, 0, None)
-    return predicted_next_month_proportion.flatten()
+    # Preprocess data
+    monthly_percentage, categories = preprocess_data(data)
 
-def allocate_budget(predicted_proportion, total_budget, categories):
-    predicted_next_month_df = pd.DataFrame({
+    # Prepare input for the model
+    X_input = monthly_percentage.values
+    if X_input.shape[0] < 3:  # Ensure at least 3 rows for prediction
+        X_input = np.pad(X_input, ((3 - X_input.shape[0], 0), (0, 0)), 'constant')
+    input_data = np.array([X_input[-1]])  # Use the last month's data
+
+    # Make prediction
+    predicted_proportions = model.predict(input_data).flatten()
+    predicted_proportions = np.clip(predicted_proportions, 0, None)  # Ensure no negative values
+
+    # Ensure categories and predicted proportions have the same length
+    if len(predicted_proportions) != len(categories):
+        min_length = min(len(predicted_proportions), len(categories))
+        predicted_proportions = predicted_proportions[:min_length]
+        categories = categories[:min_length]
+
+    # Allocate budget
+    allocation = pd.DataFrame({
         'Category': categories,
-        'Predicted_Proportion': predicted_proportion
+        'Predicted_Proportion': predicted_proportions
     })
-    predicted_next_month_df['Predicted_Budget'] = predicted_next_month_df['Predicted_Proportion'] * total_budget
+    allocation['Predicted_Budget'] = allocation['Predicted_Proportion'] * total_budget
 
-    # Format output as requested
+    # Format results
     result = "Suggested Budget Allocation for Next Month:\n"
-    for _, row in predicted_next_month_df.iterrows():
-        result += f"{row['Category']}: {row['Predicted_Budget']:.2f}\n"
+    for _, row in allocation.iterrows():
+        result += f"{row['Category']}: ${row['Predicted_Budget']:.2f}\n"
 
     return result
+# Example usage
+def main_workflow(model_path):
+    """
+    Main workflow for loading the model, simulating data, and predicting budget allocation.
 
-def plot_spending_proportion(monthly_percentage, user_id):
-    monthly_percentage.plot(kind='bar', stacked=True, figsize=(10, 6))
-    plt.title(f"Monthly Spending Proportion for User {user_id}")
-    plt.ylabel("Proportion of Total Spending")
-    plt.xlabel("Month")
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    image_path = f"spending_proportion_user_{user_id}.png"
-    plt.savefig(image_path)
-    plt.close()
-    return image_path
+    Args:
+        model_path (str): Path to the saved .keras model.
 
-def save_budget_to_file(predicted_proportion, total_budget, categories):
-    predicted_next_month_df = pd.DataFrame({
-        'Category': categories,
-        'Predicted_Proportion': predicted_proportion
+    Returns:
+        result: Predicted budget allocation results.
+    """
+    # Load the .keras model
+    model = load_keras_model(model_path)
+
+    if model is None:
+        print("Model could not be loaded. Exiting workflow.")
+        return None
+
+    # Simulate input data
+    data = pd.DataFrame({
+        "user_id": [1, 1, 1, 1],
+        "date_purchased": ["2024-09-01", "2024-10-01", "2024-11-01", "2024-12-01"],
+        "category": ["clothing", "groceries", "electronics", "health and personal"],
+        "price": [200, 150, 300, 100]
     })
-    predicted_next_month_df['Predicted_Budget'] = predicted_next_month_df['Predicted_Proportion'] * total_budget
 
-    # Ensure the JSON format is compatible
-    result = []
-    for _, row in predicted_next_month_df.iterrows():
-        result.append({
-            'Category': row['Category'],
-            'Predicted_Proportion': f"{row['Predicted_Proportion']:.4f}",
-            'Predicted_Budget': f"{row['Predicted_Budget']:.2f}"
-        })
+    # Get budget input from user
+    total_budget = get_user_budget()
+
+    # Predict budget allocation
+    result = predict_budget_allocation(model, data, total_budget)
+    print("Predicted Budget Allocation:")
+    print(result)
+    return result
+
+def get_user_budget():
+    """
+    Prompt the user to enter their total budget for the next month.
+
+    Returns:
+        total_budget (float): The user's total budget.
+    """
+    while True:
+        try:
+            total_budget = float(input("Enter your total budget for next month: "))
+            return total_budget
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")
+
 
     # Save file to cache directory
     cache_path = os.getenv('HOME', '/receiptsApp/ReceiptsAppFile/app/.idea/caches')
@@ -100,11 +125,3 @@ def save_budget_to_file(predicted_proportion, total_budget, categories):
         json.dump(result, json_file)
 
     return file_path
-
-
-
-
-
-
-
-

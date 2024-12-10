@@ -43,14 +43,33 @@ public class MachineLearningActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    // 获取用户输入的 userId 和 totalBudget
                     int userId = Integer.parseInt(editTextUserId.getText().toString().trim());
                     double totalBudget = Double.parseDouble(editTextTotalBudget.getText().toString().trim());
+                    // 初始化 Python 数据模块
+                    PyObject dataFileContent = module.callAttr("load_keras_model", "Generated_Purchases_for_Users.csv"); // 替换为实际的 CSV 文件内容
 
-                    // Call Python script to generate budget allocation and save to file
-                    PyObject filePathPy = module.callAttr("save_budget_to_file", new double[]{0.2, 0.3, 0.1, 0.1, 0.15, 0.15}, totalBudget, new String[]{"clothing", "entertainment", "electronics", "home", "health and personal", "groceries"});
+
+                    // 获取指定用户的最近数据
+                    PyObject recentData = module.callAttr("preprocess_data",date_purchased,priceategory);
+
+                    // 计算支出比例
+                    PyObject spendingProportionResult = module.callAttr("calculate_spending_proportion", recentData);
+                    PyObject monthlyPercentage = spendingProportionResult.callAttr("__getitem__", 0);
+                    PyObject categories = spendingProportionResult.callAttr("__getitem__", 1);
+
+                    // 使用模型预测下个月的支出比例
+                    PyObject predictedProportion = module.callAttr("predict_next_month_proportion", monthlyPercentage, categories);
+
+                    // 根据预测结果分配预算
+                    String result = module.callAttr("allocate_budget", predictedProportion, totalBudget, categories).toString();
+                    textViewOutput.setText(result);
+
+                    // 将分配结果保存为 JSON 文件
+                    PyObject filePathPy = module.callAttr("save_budget_to_file", predictedProportion, totalBudget, categories);
                     String filePath = filePathPy.toString();
 
-                    // Read generated JSON file
+                    // 读取保存的 JSON 文件内容
                     File file = new File(filePath);
                     if (!file.exists()) {
                         textViewOutput.setText("File not found. Please run the Python script to generate data.");
@@ -67,8 +86,9 @@ public class MachineLearningActivity extends AppCompatActivity {
                     }
                     br.close();
 
-                    // Display file content
+                    // 显示文件内容
                     textViewOutput.setText("Suggested Budget Allocation for Next Month:\n" + text.toString());
+
                 } catch (NumberFormatException e) {
                     textViewOutput.setText("Invalid input: " + e.getMessage());
                 } catch (IOException e) {
