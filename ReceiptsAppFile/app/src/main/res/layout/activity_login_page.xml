@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="364dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/receipt_scanner2"
+        android:text="Receipt Tracker Pro"
         android:textColor="#030D16"
         android:textSize="24sp"
         android:textStyle="bold"

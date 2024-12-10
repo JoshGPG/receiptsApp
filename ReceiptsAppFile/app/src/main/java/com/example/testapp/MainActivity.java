@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             String password = user.getPassword();
 
             Log.d("MainActivity", "Received User - ID: " + userId + ", Name: " + name + ", Username: " + username);
-            Toast.makeText(this, "Welcome, " + userId, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Welcome, " + userId, Toast.LENGTH_SHORT).show();
         }
 
         TextView name = findViewById(R.id.name);
