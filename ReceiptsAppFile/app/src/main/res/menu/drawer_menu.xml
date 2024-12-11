@@ -1,23 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/profile_button"
-        android:title="Profile"
-    />
-
-    <item
-        android:title=""
-        android:enabled="false"
-        android:layout_height="2px" />
-
-    <item
-        android:id="@+id/settings_button"
-        android:title="Settings"
-    />
-
-    <item
-        android:title=""
-        android:enabled="false"
-        android:layout_height="2px" />
 
     <item
         android:id="@+id/logout_button"

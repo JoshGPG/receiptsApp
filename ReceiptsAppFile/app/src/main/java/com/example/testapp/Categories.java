@@ -42,7 +42,7 @@ public class Categories extends AppCompatActivity {
         groceriesButton.setOnClickListener(v -> openReceiptListPage("Groceries"));
         clothingButton.setOnClickListener(v -> openReceiptListPage("Clothing"));
         electronicsButton.setOnClickListener(v -> openReceiptListPage("Electronics"));
-        healthButton.setOnClickListener(v -> openReceiptListPage("Health"));
+        healthButton.setOnClickListener(v -> openReceiptListPage("Health and Personal"));
         homeButton.setOnClickListener(v -> openReceiptListPage("Home"));
         entertainmentButton.setOnClickListener(v -> openReceiptListPage("Entertainment"));
 
